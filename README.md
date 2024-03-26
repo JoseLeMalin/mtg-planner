@@ -7,6 +7,7 @@ First, run the development server:
 ```bash
 npm run dev
 # or
+# https://yarnpkg.com/getting-started/install
 yarn dev
 # or
 pnpm dev
@@ -34,3 +35,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Yarn PnP / VsCode specificities:
+Install yarn V4: https://yarnpkg.com/getting-started/install
+VsCode plugin instructions: https://yarnpkg.com/getting-started/editor-sdks#vscode
+
+## Next: 
+yarn add framer-motion clsx cmdk date-fns next next-auth next-safe-action next-themes react react-day-picker react-dom react-hook-form sharp sonner tailwind-merge tailwindcss-animate
+## UI: 
+yarn add @chakra-ui/react @chakra-ui/next-js  @emotion/react @emotion/styled
+## Important packages: 
+yarn add @sequelize/core @tanstack/react-query dayjs pg uuid zod 
+
+## Dev Dependencies: 
+yarn add -D @faker-js/faker @types/node @types/react @types/react-dom @types/uuid autoprefixer eslint eslint-config-next eslint-plugin-tailwindcss postcss prettier tailwindcss typescript
