@@ -1,9 +1,10 @@
-import { env } from "@/lib/env";
+import { env } from "src/lib/env";
 import NextAuth, { AuthOptions, ISODateString } from "next-auth";
 import SequelizeAdapter from "@auth/sequelize-adapter";
 import { Sequelize } from "sequelize";
 import { Adapter } from "next-auth/adapters";
 import GithubProvider from "next-auth/providers/github";
+import pg from "pg";
 
 /**
  * Update the Default Interfaces that next-auth/sequelize work with
@@ -29,8 +30,11 @@ declare module "next-auth" {
 }
 
 // https://sequelize.org/master/manual/getting-started.html#connecting-to-a-database
-const sequelize = new Sequelize(env.DATABASE_URL);
-
+// const sequelize = new Sequelize(env.DATABASE_URL);
+const sequelize = new Sequelize(env.DATABASE_URL, {
+  dialect: "postgres",
+  dialectModule: pg,
+});
 if (env.NODE_ENV === "development") {
   sequelize.sync();
 }

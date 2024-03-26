@@ -45,6 +45,8 @@ VsCode plugin instructions: https://yarnpkg.com/getting-started/editor-sdks#vsco
 yarn add framer-motion clsx cmdk date-fns next next-auth next-safe-action next-themes react react-day-picker react-dom react-hook-form sharp sonner tailwind-merge tailwindcss-animate
 ## UI: 
 yarn add @chakra-ui/react @chakra-ui/next-js  @emotion/react @emotion/styled
+
+Icons: yarn add lucide-react react-icons
 ## Important packages: 
 yarn add @auth/sequelize-adapter @sequelize/core @tanstack/react-query dayjs pg uuid zod @t3-oss/env-nextjs
 

@@ -1,10 +1,11 @@
 import { Sequelize } from "@sequelize/core";
-import * as pg from "pg";
+import pg from "pg";
 // Option 1: Passing a connection URI
 
 const sequelize = new Sequelize(
   "postgresql://JoseLeMalin:654321@localhost:5432/youcode-postgres?schema=public",
   {
+    dialect: "postgres",
     dialectModule: pg,
   },
 ); // Example for postgres

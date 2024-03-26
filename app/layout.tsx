@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
+import { Header } from "@/src/layout/Header";
+import { Footer } from "@/src/layout/Footer";
+import { Suspense } from "react";
+import { Box, Container, Flex, Spacer } from "@chakra-ui/react";
+import RootLoading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +31,17 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <Container className={"main-container"}>
+          <Providers>
+            <Header />
+            <Box
+              className={"second-container "}
+            >
+              <Suspense fallback={<RootLoading />}>{children}</Suspense>
+            </Box>
+            <Footer />
+          </Providers>
+        </Container>
       </body>
     </html>
   );
