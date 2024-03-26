@@ -46,7 +46,13 @@ yarn add framer-motion clsx cmdk date-fns next next-auth next-safe-action next-t
 ## UI: 
 yarn add @chakra-ui/react @chakra-ui/next-js  @emotion/react @emotion/styled
 ## Important packages: 
-yarn add @sequelize/core @tanstack/react-query dayjs pg uuid zod 
+yarn add @auth/sequelize-adapter @sequelize/core @tanstack/react-query dayjs pg uuid zod @t3-oss/env-nextjs
 
 ## Dev Dependencies: 
 yarn add -D @faker-js/faker @types/node @types/react @types/react-dom @types/uuid autoprefixer eslint eslint-config-next eslint-plugin-tailwindcss postcss prettier tailwindcss typescript
+
+
+## Next-Auth Install and Config
+    https://authjs.dev/getting-started/introduction
+# Find Db adapter and write config: 
+    https://authjs.dev/reference/adapter/sequelize

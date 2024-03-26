@@ -14,13 +14,13 @@ export const Providers = ({ children }: PropsWithChildren) => {
     <>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <ChakraProvider>
-          <SessionProvider>
-            <ColorModeProvider>
-              <QueryClientProvider client={queryClient}>
-                {children}
-              </QueryClientProvider>
-            </ColorModeProvider>
-          </SessionProvider>
+          {/* <SessionProvider> */}
+          <ColorModeProvider>
+            <QueryClientProvider client={queryClient}>
+              {children}
+            </QueryClientProvider>
+          </ColorModeProvider>
+          {/* </SessionProvider> */}
         </ChakraProvider>
       </ThemeProvider>
     </>
