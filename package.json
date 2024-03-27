@@ -4,10 +4,14 @@
   "packageManager": "yarn@4.1.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "next dev",
+    "docker:build": "docker compose -f .docker/compose.yaml up",
+    "docker:down": "docker compose -f .docker/compose.yaml down",
+    "lint": "next lint",
+    "prettier-c": "npx prettier ./app/ ./pages/ ./src/ -c",
+    "prettier-w": "npx prettier ./app/ ./pages/ ./src/ -w",
+    "start": "next start"
   },
   "dependencies": {
     "@auth/sequelize-adapter": "^1.5.1",
@@ -30,6 +34,7 @@
     "next-safe-action": "^6.2.0",
     "next-themes": "^0.3.0",
     "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
     "react": "^18.2.0",
     "react-day-picker": "^8.10.0",
     "react-dom": "^18.2.0",
@@ -56,6 +61,7 @@
     "eslint-plugin-tailwindcss": "^3.15.1",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
+    "sequelize-cli": "^6.6.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.4.3"
   }

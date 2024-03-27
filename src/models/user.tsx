@@ -48,11 +48,14 @@ export class User extends Model<
 
   // Associations
   @HasOne(() => Account, {
-    foreignKey: "userId",
+    foreignKey: {
+      name: "userId",
+      columnName: 'userId',
+    },
     // By default => The foreign key will reference the `id` attribute of the `Account` model
     // sourceKey: "id",
   })
-  declare account?: NonAttribute<Account>;
+  declare account: NonAttribute<Account>;
 
   // DB management
   @Attribute(DataTypes.DATE)

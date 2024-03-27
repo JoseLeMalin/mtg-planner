@@ -1,3 +1,4 @@
+// import { authenticate, syncDatabase } from "@/sequelize/sequelize.provider";
 import HomeComponent from "@/src/components/home/Home";
 import {
   Button,
@@ -8,10 +9,8 @@ import {
   Stack,
 } from "@chakra-ui/react";
 
-export default function Home() {
-  return (
-    <HomeComponent>
-      
-    </HomeComponent>
-  );
+export default async function Home() {
+  // await syncDatabase();
+  // await authenticate();
+  return <HomeComponent></HomeComponent>;
 }

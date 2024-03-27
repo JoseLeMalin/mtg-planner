@@ -15,6 +15,7 @@ import {
   Container,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { ButtonAuthSignIn } from "../components/ButtonSignIn";
 
 interface Props {
   children: React.ReactNode;
@@ -39,9 +40,7 @@ export async function Header() {
 
               {session ? (
                 <>
-                  <Button>
-                    <Link href={"api/auth/signin"}>Sign in</Link>
-                  </Button>
+                  <ButtonAuthSignIn />
                 </>
               ) : (
                 <Menu>
