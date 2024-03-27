@@ -58,3 +58,9 @@ yarn add -D @faker-js/faker @types/node @types/react @types/react-dom @types/uui
     https://authjs.dev/getting-started/introduction
 # Find Db adapter and write config: 
     https://authjs.dev/reference/adapter/sequelize
+
+
+
+## Important Links: 
+    https://chakra-ui.com/docs/components
+    https://chakra-templates.vercel.app/navigation/navbar

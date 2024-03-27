@@ -8,10 +8,10 @@ import {
   Stack,
 } from "@chakra-ui/react";
 
-export default function Home() {
+export default function Authpage() {
   return (
-    <HomeComponent>
-      
-    </HomeComponent>
+ <Button>
+    sdgjlkn
+ </Button>
   );
 }

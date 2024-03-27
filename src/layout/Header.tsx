@@ -12,6 +12,7 @@ import {
   MenuDivider,
   Stack,
   Center,
+  Container,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
@@ -23,10 +24,11 @@ interface Props {
 
 export async function Header() {
   const session = await getAuthSession();
+
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <Box px={4}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+      <Container as={Stack} maxW={"6xl"} py={4} spacing={4}>
+        <Flex h={8} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
             <Link href={"/"}>Logo</Link>
           </Box>
@@ -34,42 +36,54 @@ export async function Header() {
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
               <ThemeToggle />
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                >
-                  <Avatar
-                    size={"sm"}
-                    src={"https://avatars.dicebear.com/api/male/username.svg"}
-                  />
-                </MenuButton>
-                <MenuList alignItems={"center"}>
-                  <br />
-                  <Center>
+
+              {session ? (
+                <>
+                  <Button>
+                    <Link href={"api/auth/signin"}>Sign in</Link>
+                  </Button>
+                </>
+              ) : (
+                <Menu>
+                  <MenuButton
+                    as={Button}
+                    rounded={"full"}
+                    variant={"link"}
+                    cursor={"pointer"}
+                    minW={0}
+                  >
                     <Avatar
-                      size={"2xl"}
+                      size={"sm"}
                       src={"https://avatars.dicebear.com/api/male/username.svg"}
                     />
-                  </Center>
-                  <br />
-                  <Center>
-                    <p>Username</p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
-                </MenuList>
-              </Menu>
+                  </MenuButton>
+                  <MenuList alignItems={"center"}>
+                    <Button></Button>
+                    <br />
+                    <Center>
+                      <Avatar
+                        size={"2xl"}
+                        src={
+                          "https://avatars.dicebear.com/api/male/username.svg"
+                        }
+                      />
+                    </Center>
+                    <br />
+                    <Center>
+                      <p>Username</p>
+                    </Center>
+                    <br />
+                    <MenuDivider />
+                    <MenuItem>Your Servers</MenuItem>
+                    <MenuItem>Account Settings</MenuItem>
+                    <MenuItem>Logout</MenuItem>
+                  </MenuList>
+                </Menu>
+              )}
             </Stack>
           </Flex>
         </Flex>
-      </Box>
+      </Container>
     </header>
   );
 }

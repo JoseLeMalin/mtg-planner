@@ -23,8 +23,6 @@ const SocialButton = ({
   return (
     <Button
       rounded={"full"}
-      w={8}
-      h={8}
       cursor={"pointer"}
       as={"a"}
       href={href}
@@ -46,21 +44,21 @@ export const Footer = () => {
         as={Stack}
         maxW={"6xl"}
         py={4}
-        direction={{ base: "column", md: "row" }}
         spacing={4}
+        direction={{ base: "column", md: "row" }}
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Text>© 2022 Chakra Templates. All rights reserved</Text>
+        <Text>Footer content to be handled</Text>
         <Stack direction={"row"} spacing={6}>
           <SocialButton label={"Twitter"} href={"#"}>
-            <FaTwitter />
+            <FaTwitter size={"1.5rem"} />
           </SocialButton>
           <SocialButton label={"YouTube"} href={"#"}>
-            <FaYoutube />
+            <FaYoutube size={"1.5rem"} />
           </SocialButton>
           <SocialButton label={"Instagram"} href={"#"}>
-            <FaInstagram />
+            <FaInstagram size={"1.5rem"} />
           </SocialButton>
         </Stack>
       </Container>

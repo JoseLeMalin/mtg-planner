@@ -1,4 +1,5 @@
-import { authOptions } from "@/pages/api/[...nextauth]";
+
+import { authOptions } from "@/app/api/auth/[...nextauth]";
 import {
   GetServerSidePropsContext,
   NextApiRequest,

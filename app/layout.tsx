@@ -5,7 +5,7 @@ import { Providers } from "./Providers";
 import { Header } from "@/src/layout/Header";
 import { Footer } from "@/src/layout/Footer";
 import { Suspense } from "react";
-import { Box, Container, Flex, Spacer } from "@chakra-ui/react";
+import { Box, Container, Flex, Spacer, Stack } from "@chakra-ui/react";
 import RootLoading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -34,11 +34,9 @@ export default function RootLayout({
         <Container className={"main-container"}>
           <Providers>
             <Header />
-            <Box
-              className={"second-container "}
-            >
+            <Container className={"app-container"} maxW={"6xl"}>
               <Suspense fallback={<RootLoading />}>{children}</Suspense>
-            </Box>
+            </Container>
             <Footer />
           </Providers>
         </Container>
