@@ -1,5 +1,4 @@
-
-import { authOptions } from "@/app/api/auth/[...nextauth]";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import {
   GetServerSidePropsContext,
   NextApiRequest,
@@ -11,6 +10,7 @@ type ParametersGetServerSession =
   | []
   | [GetServerSidePropsContext["req"], GetServerSidePropsContext["res"]]
   | [NextApiRequest, NextApiResponse];
+
 export const getAuthSession = async (
   ...parameters: ParametersGetServerSession
 ) => {

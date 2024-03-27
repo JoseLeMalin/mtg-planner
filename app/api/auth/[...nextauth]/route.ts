@@ -76,8 +76,6 @@ export const authOptions: AuthOptions = {
       return session;
     },
     async signIn({ user, account, profile, email, credentials }) {
-      console.log("Do we come here ?");
-      
       const isAllowedToSignIn = true;
       if (isAllowedToSignIn) {
         return true;
@@ -91,4 +89,8 @@ export const authOptions: AuthOptions = {
   },
 };
 
+
+
+const handler = NextAuth(authOptions);
 export default NextAuth(authOptions);
+export { handler as GET, handler as POST };
