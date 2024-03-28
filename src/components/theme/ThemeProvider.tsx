@@ -4,7 +4,6 @@ import { Moon, Sun } from "lucide-react";
 import React from "react";
 import { useColorMode, useColorModeValue, IconButton } from "@chakra-ui/react";
 
-
 export function ThemeToggle() {
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue("dark", "light");
@@ -20,7 +19,6 @@ export function ThemeToggle() {
     />
   );
 }
-
 
 // next-theme
 /* export function ThemeToggleBis() {

@@ -7,9 +7,9 @@ import { ISODateString, getServerSession } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import { NextAuthOptions } from "next-auth";
 import { env } from "./env";
-import SequelizeAdapter from "@auth/sequelize-adapter";
 import { Adapter } from "next-auth/adapters";
-import { sequelize } from "@/sequelize/sequelize.provider";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { prisma } from "src/lib/prisma";
 
 type ParametersGetServerSession =
   | []
@@ -18,28 +18,28 @@ type ParametersGetServerSession =
 /**
  * Update the Default Interfaces that next-auth/sequelize work with
  */
-declare module "next-auth" {
-  interface User {
-    /** The user's postal address. */
-    id: string;
-    name: string;
-    address: string;
-    email: string;
-    emailVerified: Date;
-  }
-  interface Session {
-    user: {
-      id: string;
-      name?: string | null;
-      email?: string | null;
-      image?: string | null;
-    };
-    expires: ISODateString;
-  }
-}
+// declare module "next-auth" {
+//   interface User {
+//     /** The user's postal address. */
+//     id: string;
+//     name: string;
+//     address: string;
+//     email: string;
+//     emailVerified: Date;
+//   }
+//   interface Session {
+//     user: {
+//       id: string;
+//       name?: string | null;
+//       email?: string | null;
+//       image?: string | null;
+//     };
+//     expires: ISODateString;
+//   }
+// }
 
 export const authOptions: NextAuthOptions = {
-  adapter: SequelizeAdapter(sequelize) as Adapter, // Git issue https://github.com/nextauthjs/next-auth/issues/9493,
+  adapter: PrismaAdapter(prisma) as Adapter, // Git issue https://github.com/nextauthjs/next-auth/issues/9493,
   providers: [
     GithubProvider({
       clientId: env.GITHUB_ID,
@@ -58,7 +58,10 @@ export const authOptions: NextAuthOptions = {
     },
     async redirect({ url, baseUrl }) {
       console.log("Do we reach here redirect?", url, baseUrl);
-      console.log("new URL(url).origin === baseUrl", new URL(url).origin === baseUrl);
+      console.log(
+        "new URL(url).origin === baseUrl",
+        new URL(url).origin === baseUrl,
+      );
       // Allows relative callback URLs
       if (url.startsWith("/")) return `${baseUrl}${url}`;
       // Allows callback URLs on the same origin

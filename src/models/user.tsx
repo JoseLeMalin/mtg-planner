@@ -1,4 +1,4 @@
-import {
+/* import {
   DataTypes,
   Model,
   InferAttributes,
@@ -50,7 +50,7 @@ export class User extends Model<
   @HasOne(() => Account, {
     foreignKey: {
       name: "userId",
-      columnName: 'userId',
+      columnName: "userId",
     },
     // By default => The foreign key will reference the `id` attribute of the `Account` model
     // sourceKey: "id",
@@ -64,3 +64,4 @@ export class User extends Model<
   @Attribute(DataTypes.DATE)
   declare updatedAt: Date | null;
 }
+ */

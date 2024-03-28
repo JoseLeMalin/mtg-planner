@@ -9,9 +9,5 @@ import {
 } from "@chakra-ui/react";
 
 export default function Authpage() {
-  return (
- <Button>
-    sdgjlkn
- </Button>
-  );
+  return <Button>AuthPage</Button>;
 }

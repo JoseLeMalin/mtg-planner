@@ -8,7 +8,6 @@ body {
   height: 100%;
 }
 
-
 body {
   color: rgb(var(--foreground-rgb));
   overflow: auto;
@@ -139,7 +138,6 @@ body {
 
   /* background-color: green; */
 }
-
 
 .left-container {
   flex: 1 1 0;

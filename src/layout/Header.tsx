@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { ButtonAuthSignIn } from "../components/ButtonSignIn";
+import { ButtonLogout } from "../components/ButtonLogout";
 
 interface Props {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ interface Props {
 
 export async function Header() {
   const session = await getAuthSession();
+  console.log("session?.user", session?.user);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
@@ -38,7 +40,7 @@ export async function Header() {
             <Stack direction={"row"} spacing={7}>
               <ThemeToggle />
 
-              {session ? (
+              {!session?.user ? (
                 <>
                   <ButtonAuthSignIn />
                 </>
@@ -57,8 +59,6 @@ export async function Header() {
                     />
                   </MenuButton>
                   <MenuList alignItems={"center"}>
-                    <Button></Button>
-                    <br />
                     <Center>
                       <Avatar
                         size={"2xl"}
@@ -75,7 +75,9 @@ export async function Header() {
                     <MenuDivider />
                     <MenuItem>Your Servers</MenuItem>
                     <MenuItem>Account Settings</MenuItem>
-                    <MenuItem>Logout</MenuItem>
+                    <MenuItem>
+                      <ButtonLogout> Logout</ButtonLogout>{" "}
+                    </MenuItem>
                   </MenuList>
                 </Menu>
               )}

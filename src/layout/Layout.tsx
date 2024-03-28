@@ -1,7 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
 
-
-
 export const Layout = (props: ComponentPropsWithoutRef<"div">) => {
   return (
     <div
@@ -27,7 +25,7 @@ export const LayoutHeader = (props: ComponentPropsWithoutRef<"div">) => {
 };
 
 export const LayoutTitle = (props: ComponentPropsWithoutRef<"h1">) => {
- //  return <Typography {...props} variant="h2" className={cn(props.className)} />;
+  //  return <Typography {...props} variant="h2" className={cn(props.className)} />;
 };
 
 export const LayoutDescription = (props: ComponentPropsWithoutRef<"p">) => {
@@ -35,11 +33,9 @@ export const LayoutDescription = (props: ComponentPropsWithoutRef<"p">) => {
 };
 
 export const LayoutActions = (props: ComponentPropsWithoutRef<"div">) => {
-  return (
-    <div {...props} />
-  );
+  return <div {...props} />;
 };
 
 export const LayoutContent = (props: ComponentPropsWithoutRef<"div">) => {
-  return <div {...props}  />;
+  return <div {...props} />;
 };

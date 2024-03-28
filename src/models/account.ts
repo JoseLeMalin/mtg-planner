@@ -1,22 +1,4 @@
-import {
-  Sequelize,
-  DataTypes,
-  Model,
-  InferAttributes,
-  InferCreationAttributes,
-  CreationOptional,
-} from "@sequelize/core";
-import { UUID } from "@sequelize/core/_non-semver-use-at-your-own-risk_/dialects/abstract/data-types.js";
-import {
-  Attribute,
-  PrimaryKey,
-  AutoIncrement,
-  NotNull,
-  Table,
-  Default,
-  Unique,
-} from "@sequelize/core/decorators-legacy";
-import { HasOne, NOW, UUIDV4 } from "sequelize";
+/* 
 import { User } from "./user";
 
 // https://sequelize.org/docs/v7/models/naming-strategies/#manually-setting-the-table-name
@@ -35,7 +17,6 @@ export class Account extends Model<
   @PrimaryKey
   @Default(UUIDV4)
   declare id: UUID;
-  
 
   @Attribute(DataTypes.UUIDV4)
   @NotNull
@@ -72,3 +53,4 @@ export class Account extends Model<
   @Attribute(DataTypes.DATE)
   declare updatedAt: Date | null;
 }
+ */
