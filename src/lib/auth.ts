@@ -48,6 +48,8 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, account }) {
+      console.log("Do we reach here jwt token?", token);
+      console.log("Do we reach here jwt account?", account);
       // Persist the OAuth access_token to the token right after signin
       if (account) {
         token.accessToken = account.access_token;
@@ -55,13 +57,20 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async redirect({ url, baseUrl }) {
+      console.log("Do we reach here redirect?", url, baseUrl);
+      console.log("new URL(url).origin === baseUrl", new URL(url).origin === baseUrl);
       // Allows relative callback URLs
       if (url.startsWith("/")) return `${baseUrl}${url}`;
       // Allows callback URLs on the same origin
       else if (new URL(url).origin === baseUrl) return url;
+      console.log("Do we reach here redirect?", url, baseUrl);
       return baseUrl;
     },
     async session({ session, user, token, trigger }) {
+      console.log("Do we reach here session session?", session);
+      console.log("Do we reach here session user?", user);
+      console.log("Do we reach here session token?", token);
+
       if (!token?.sub || !token?.picture)
         throw new Error("Missing !token?.sub || !token?.picture");
       session.user.id = token.sub;
@@ -69,6 +78,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async signIn({ user, account, profile, email, credentials }) {
+      console.log("Do we reach here signin?");
       const isAllowedToSignIn = true;
       if (isAllowedToSignIn) {
         return true;
@@ -77,13 +87,13 @@ export const authOptions: NextAuthOptions = {
       }
     },
   },
-  pages: {
-    signIn: "/auth/signin",
-    signOut: "/auth/signout",
-    error: "/auth/error", // Error code passed in query string as ?error=
-    verifyRequest: "/auth/verify-request", // (used for check email message)
-    newUser: "/auth/new-user",
-  },
+  // pages: {
+  //   signIn: "/auth/signin",
+  //   signOut: "/auth/signout",
+  //   error: "/auth/error", // Error code passed in query string as ?error=
+  //   verifyRequest: "/auth/verify-request", // (used for check email message)
+  //   newUser: "/auth/new-user",
+  // },
   session: {
     strategy: "jwt",
   },
