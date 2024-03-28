@@ -102,6 +102,11 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
+/**
+ * Get server session of user
+ * @param parameters 
+ * @returns 
+ */
 export const getAuthSession = async (
   ...parameters: ParametersGetServerSession
 ) => {

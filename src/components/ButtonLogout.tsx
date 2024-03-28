@@ -13,8 +13,10 @@ export function ButtonLogout({ children }: PropsWithChildren) {
   };
   return (
     <>
-      <LogOut className="mr-2" size={12} onClick={handleLogout} />
-      {children}
+      <div>
+        <LogOut className="mr-2" size={12} onClick={handleLogout} />
+      </div>
+      <div>{children}</div>
     </>
   );
 }

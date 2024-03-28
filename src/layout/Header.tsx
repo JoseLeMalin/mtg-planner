@@ -73,8 +73,7 @@ export async function Header() {
                     </Center>
                     <br />
                     <MenuDivider />
-                    <MenuItem>Your Servers</MenuItem>
-                    <MenuItem>Account Settings</MenuItem>
+                    <MenuItem ><Link href={"/admin"}>Your Account</Link></MenuItem>
                     <MenuItem>
                       <ButtonLogout> Logout</ButtonLogout>{" "}
                     </MenuItem>

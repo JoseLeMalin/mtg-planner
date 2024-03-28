@@ -1,14 +1,7 @@
 import HomeComponent from "@/src/components/home/Home";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Link,
-  Stack,
-} from "@chakra-ui/react";
+import { getAuthSession } from "@/src/lib/auth";
 
 export default async function Home() {
-  // await syncDatabase();
-  return <HomeComponent></HomeComponent>;
+  const session = await getAuthSession();
+  return <HomeComponent />;
 }

@@ -1,3 +1,4 @@
+import { getAuthSession } from "@/src/lib/auth";
 import {
   Button,
   Card,
@@ -7,8 +8,11 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
+import HomeUserInfos from "./CardUserInfo";
 
-export default function HomeComponent({ children }: PropsWithChildren) {
+export default async function HomeComponent({ children }: PropsWithChildren) {
+
+
   return (
     <Stack
       spacing={4}
@@ -18,7 +22,9 @@ export default function HomeComponent({ children }: PropsWithChildren) {
       justify={{ base: "center", md: "space-between" }}
       align={{ base: "center", md: "center" }}
     >
-      <Card>
+      <HomeUserInfos />
+      {children}
+      {/* <Card>
         <CardHeader>Home</CardHeader>
         <CardBody>
           <Button>
@@ -26,7 +32,7 @@ export default function HomeComponent({ children }: PropsWithChildren) {
           </Button>
           {children}
         </CardBody>
-      </Card>
+      </Card> */}
     </Stack>
   );
 }
