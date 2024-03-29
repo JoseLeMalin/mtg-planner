@@ -30,11 +30,13 @@ export default function RootLayout({
           sizes="<generated>"
         />
       </head>
-      <body className={inter.className}>
+      <body
+        className={`${inter.className} bg-background h-full font-sans antialiased`}
+      >
         <Container className={"main-container"}>
           <Providers>
             <Header />
-            <Container className={"app-container"} maxW={"6xl"}>
+            <Container className={"app-container"}>
               <Suspense fallback={<RootLoading />}>{children}</Suspense>
             </Container>
             <Footer />

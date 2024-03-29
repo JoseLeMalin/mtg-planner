@@ -12,13 +12,13 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 export default function UserCalendar({ children }: PropsWithChildren) {
   const [value, setValue] = useState(dayjs().toDate());
 
-  const handleOnChange =(nextValue: Value) => {
+  const handleOnChange = (nextValue: Value) => {
     if (!nextValue) {
-        return 
+      return;
     }
-    const test = nextValue.toString()
-    setValue(dayjs(test).toDate())
-  }
+    const test = nextValue.toString();
+    setValue(dayjs(test).toDate());
+  };
   return (
     <div>
       <Calendar onChange={handleOnChange} value={value} />

@@ -73,9 +73,11 @@ export async function Header() {
                     </Center>
                     <br />
                     <MenuDivider />
-                    <MenuItem ><Link href={"/admin"}>Your Account</Link></MenuItem>
                     <MenuItem>
-                      <ButtonLogout> Logout</ButtonLogout>{" "}
+                      <Link href={"/admin"}>Your Account</Link>
+                    </MenuItem>
+                    <MenuItem className="flex">
+                      <ButtonLogout> Logout</ButtonLogout>
                     </MenuItem>
                   </MenuList>
                 </Menu>

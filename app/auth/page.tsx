@@ -1,12 +1,4 @@
-import HomeComponent from "@/src/components/home/Home";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Link,
-  Stack,
-} from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 
 export default function Authpage() {
   return <Button>AuthPage</Button>;

@@ -2,8 +2,8 @@
 
 import { LogOut } from "lucide-react";
 import { useLogoutNextAuth } from "src/hooks/useLogoutNextAuth";
-import { Button } from "@chakra-ui/react";
-import { PropsWithChildren } from "react";
+import { Button, Divider } from "@chakra-ui/react";
+import { Fragment, PropsWithChildren } from "react";
 
 export function ButtonLogout({ children }: PropsWithChildren) {
   const { isPending, mutate } = useLogoutNextAuth();
@@ -13,8 +13,8 @@ export function ButtonLogout({ children }: PropsWithChildren) {
   };
   return (
     <>
-      <div>
-        <LogOut className="mr-2" size={12} onClick={handleLogout} />
+      <div className="space-x-6">
+        <LogOut size={12} onClick={handleLogout} />
       </div>
       <div>{children}</div>
     </>
