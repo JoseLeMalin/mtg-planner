@@ -29,7 +29,7 @@ export async function Header() {
   console.log("session?.user", session?.user);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
+    <header className="bg-background sticky top-0 z-40 w-full border-b">
       <Container as={Stack} maxW={"6xl"} py={4} spacing={4}>
         <Flex h={8} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
@@ -38,6 +38,9 @@ export async function Header() {
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
+            <Box>
+            <Link href={"/slider"}>slider </Link>
+          </Box>
               <ThemeToggle />
 
               {!session?.user ? (

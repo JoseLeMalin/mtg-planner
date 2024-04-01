@@ -5,8 +5,11 @@ import { getAuthSession } from "@/src/lib/auth";
 export default async function Home() {
   const session = await getAuthSession();
   return (
-    <Layout className={"flex size-full flex-col flex-wrap space-x-5"}>
+    <div className="flex">
+      {/* <Layout className={"flex size-full flex-col space-x-5 md:flex"}> */}
       <HomeComponent />
-    </Layout>
+
+      {/* </Layout> */}
+    </div>
   );
 }

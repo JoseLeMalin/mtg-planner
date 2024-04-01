@@ -39,7 +39,7 @@ const SocialButton = ({
 
 export const Footer = () => {
   return (
-    <footer className="w-full border-t border-card">
+    <footer className="border-card w-full border-t">
       <Container
         as={Stack}
         maxW={"6xl"}

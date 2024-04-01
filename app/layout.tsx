@@ -7,6 +7,7 @@ import { Footer } from "@/src/layout/Footer";
 import { Suspense } from "react";
 import { Box, Container, Flex, Spacer, Stack } from "@chakra-ui/react";
 import RootLoading from "./loading";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -16,11 +16,11 @@ import {
   Spinner,
   Stack,
   useBreakpointValue,
+  Text,
 } from "@chakra-ui/react";
 import { Fragment, PropsWithChildren, Suspense, useState } from "react";
-import Slider from "react-slick";
+import Slider from "@ant-design/react-slick";
 import Image from "next/image";
-import { Text } from "@chakra-ui/react";
 import {
   ArrowBigLeftIcon,
   ArrowBigRightIcon,
@@ -29,8 +29,6 @@ import {
   Trash2,
 } from "lucide-react";
 import { Deck } from "./Home";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 type UserDecklist = { decks: Deck[] } & PropsWithChildren;
 
@@ -101,7 +99,7 @@ export default function UserDecklist({ decks, children }: UserDecklist) {
       style={{
         width: width + "px",
       }}
-      className="border-yellow"
+      className="flex border-yellow"
       overflow={"auto"}
     >
       {/* <Stack

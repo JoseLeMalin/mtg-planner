@@ -79,18 +79,16 @@ export default async function HomeComponent({ children }: PropsWithChildren) {
   return (
     <>
       {/* h={"100%"} w={"100%"} */}
-      <Container className="flex flex-col space-y-4" w={"2500px"} mx={0} py={4}>
-        <Box className="flex space-y-4 my-4 bg-blue" width={"1000px"}>
+      <Container className="flex flex-col space-y-4" mx={0} py={4}>
+        <Box className="relative my-4 space-y-4 bg-blue">
           <Suspense fallback={<Spinner />}>
             <Card
-              className="w-full"
               colorScheme="red"
-              size={"lg"}
               variant="outline"
             >
               <CardHeader>Your decks:</CardHeader>
               <CardBody>
-                <Box className="w-full bg-orange border-3">
+                <Box className="border-3 flex bg-orange">
                   <DecksList decks={decks} />
                 </Box>
               </CardBody>
