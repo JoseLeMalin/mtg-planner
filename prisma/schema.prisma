@@ -7,8 +7,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+id                  String          @id @default(cuid())
+name                String? 
+email               String?         @unique
+emailVerified       DateTime?
+Role                Role            @default(USER)
+image               String?
+isEmailVerified     Boolean         @default(false)
+createdAt           DateTime?
+updatedAt           DateTime?       @updatedAt
+accounts            Account[]
+sessions            Session[]
+decks               Deck[]          @relation("OwnsDeck")
+}
+
+
 model Account {
-  id                String  @id @default(cuid())
+  id                String        @id @default(cuid())
   userId            String
   type              String
   provider          String
@@ -20,40 +36,51 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User          @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
 
 model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id              String   @id @default(cuid())
+  sessionToken    String   @unique
+  userId          String
+  expires         DateTime
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-model User {
-  id             String         @id @default(cuid())
-  name           String?
-  email          String?        @unique
-  emailVerified  DateTime?
-  image          String?
-  createdAt      DateTime?
-  accounts       Account[]
-  sessions       Session[]
+
+model Deck {
+  id              String          @id @default(cuid())
+  name            String
+  image           String?
+  nbCards         Int
+  commander       String?
+  nbVictories     Int?            @default(0)
+  nbDefeats       Int?            @default(0)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime?       @updatedAt
+  createdBy       String
+  ownerId         String      
+  owner           User            @relation("OwnsDeck",fields: [ownerId], references: [id])
 }
 
 model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+  id              String
+  token           String          @unique
+  expires         DateTime
 
-  @@unique([identifier, token])
+  @@unique([id, token])
   @@map("verificationtokens")
 }
-
 
 enum Role {
   USER
   ADMIN
+}
+
+enum TokenType {
+  ACCESS
+  REFRESH
+  RESET_PASSWORD
+  VERIFY_EMAIL
 }

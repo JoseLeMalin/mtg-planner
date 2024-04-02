@@ -17,6 +17,7 @@ import {
 import Link from "next/link";
 import { ButtonAuthSignIn } from "../components/ButtonSignIn";
 import { ButtonLogout } from "../components/ButtonLogout";
+import { useLogoutNextAuth } from "../hooks/useLogoutNextAuth";
 
 interface Props {
   children: React.ReactNode;
@@ -38,9 +39,9 @@ export async function Header() {
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-            <Box>
-            <Link href={"/slider"}>slider </Link>
-          </Box>
+              <Box>
+                <Link href={"/slider"}>slider </Link>
+              </Box>
               <ThemeToggle />
 
               {!session?.user ? (
@@ -79,12 +80,10 @@ export async function Header() {
                     <MenuItem>
                       <Link href={"/admin"}>Your Account</Link>
                     </MenuItem>
-                    <MenuItem className="flex">
-                      <ButtonLogout> Logout</ButtonLogout>
-                    </MenuItem>
                   </MenuList>
                 </Menu>
               )}
+              <ButtonLogout> Logout</ButtonLogout>
             </Stack>
           </Flex>
         </Flex>

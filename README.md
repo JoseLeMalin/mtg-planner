@@ -42,16 +42,16 @@ Install yarn V4: https://yarnpkg.com/getting-started/install
 VsCode plugin instructions: https://yarnpkg.com/getting-started/editor-sdks#vscode
 
 ## Next: 
-yarn add framer-motion clsx cmdk date-fns next next-auth next-safe-action next-themes react react-day-picker react-dom react-hook-form sharp sonner tailwind-merge tailwindcss-animate
+pnpm add framer-motion clsx cmdk date-fns next next-auth next-safe-action next-themes react react-day-picker react-dom react-hook-form  sharp sonner tailwind-merge tailwindcss-animate
 ## UI: 
-yarn add @chakra-ui/react @chakra-ui/next-js  @emotion/react @emotion/styled
+pnpm add @chakra-ui/react @chakra-ui/next-js  @emotion/react @emotion/styled
 
-Icons: yarn add lucide-react react-icons
+Icons: pnpm add lucide-react react-icons
 ## Important packages: 
-yarn add @auth/sequelize-adapter @sequelize/core @tanstack/react-query dayjs pg uuid zod @t3-oss/env-nextjs
+pnpm add @auth/sequelize-adapter @hookform/resolvers @sequelize/core @tanstack/react-query dayjs pg uuid zod @t3-oss/env-nextjs
 
 ## Dev Dependencies: 
-yarn add -D @faker-js/faker @types/node @types/react @types/react-dom @types/uuid autoprefixer eslint eslint-config-next eslint-plugin-tailwindcss postcss prettier tailwindcss typescript
+pnpm add -D @faker-js/faker @types/node @types/react @types/react-dom @types/uuid autoprefixer eslint eslint-config-next eslint-plugin-tailwindcss postcss prettier tailwindcss typescript
 
 
 ## Next-Auth Install and Config
@@ -64,3 +64,6 @@ yarn add -D @faker-js/faker @types/node @types/react @types/react-dom @types/uui
 ## Important Links: 
     https://chakra-ui.com/docs/components
     https://chakra-templates.vercel.app/navigation/navbar
+    
+## Security    
+    https://cheatsheetseries.owasp.org/
