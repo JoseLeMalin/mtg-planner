@@ -61,6 +61,15 @@ export default async function DeckEditForm({ defaultValue }: DeckFormEdit) {
     const nbCards = formData.get("nbCards") as string;
 
     if (!id) {
+      console.log("ici ?", {
+        name,
+        nbCards: parseInt(nbCards),
+        commander,
+        image,
+        ownerId: "cluibebcn0000ufdxdpol42vk",
+        createdBy: "cluibebcn0000ufdxdpol42vk",
+        createdAt: getUTCDatePostGres(),
+      });
       return await createDeckNextAction({
         data: {
           name,
@@ -69,7 +78,7 @@ export default async function DeckEditForm({ defaultValue }: DeckFormEdit) {
           image,
           ownerId: "cluibebcn0000ufdxdpol42vk",
           createdBy: "cluibebcn0000ufdxdpol42vk",
-          createdAt: getUTCDatePostGres().toString(),
+          createdAt: getUTCDatePostGres(),
         },
       });
     }
@@ -124,7 +133,7 @@ export default async function DeckEditForm({ defaultValue }: DeckFormEdit) {
             ""
           )}
           <Heading as="h3" size="sm">
-            Commander
+            Nb Cards
           </Heading>
           <Input
             defaultValue={nbCards}
@@ -134,13 +143,13 @@ export default async function DeckEditForm({ defaultValue }: DeckFormEdit) {
             size="md"
           />
           <Heading as="h3" size="sm">
-            Commander
+            Image link
           </Heading>
           <Input
             defaultValue={image}
             name="image"
             id="image"
-            placeholder="medium size"
+            placeholder="Image link"
             size="md"
           />
           <Button type="submit">Submit</Button>

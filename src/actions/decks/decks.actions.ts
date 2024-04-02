@@ -1,3 +1,5 @@
+"use server";
+
 import { authAction } from "@/src/lib/actions";
 import {
   DeckCreate,

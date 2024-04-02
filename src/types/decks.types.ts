@@ -25,7 +25,7 @@ export const schemaDeckCreate = z.object({
   commander: z.string().optional(),
   nbVictories: z.number().optional(),
   nbDefeats: z.number().optional(),
-  createdAt: z.string().datetime(),
+  createdAt: z.date(),
   updatedAt: z.string().datetime().optional(),
   createdBy: z.string(),
   ownerId: z.string(),
