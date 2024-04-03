@@ -9,21 +9,20 @@ export default async function Home() {
   const session = await getAuthSession();
   return (
     <Fragment>
-      <main className="flexx w-full bg-black">
+      <main className="bg-black flex w-full">
+        {!session?.user.name ? (
+          <div className="flex">
+            <h1>Please connect first</h1>
+            <ButtonAuthSignIn />
+          </div>
+        ) : (
+          <div className="flex w-full">
+            {/* <Layout className={"flex size-full flex-col space-x-5 md:flex"}> */}
+            <HomeComponent />
 
-      {!session?.user.name ? (
-        <div className="flex">
-          <h1>Please connect first</h1>
-          <ButtonAuthSignIn />
-        </div>
-      ) : (
-        <div className="flex w-full">
-          {/* <Layout className={"flex size-full flex-col space-x-5 md:flex"}> */}
-          <HomeComponent />
-
-          {/* </Layout> */}
-        </div>
-      )}
+            {/* </Layout> */}
+          </div>
+        )}
       </main>
     </Fragment>
   );

@@ -42,7 +42,7 @@ export const Footer = () => {
     <footer className="border-card w-full border-t">
       <Container
         as={Stack}
-        maxW={"6xl"}
+        maxW={"7xl"}
         py={4}
         spacing={4}
         direction={{ base: "column", md: "row" }}

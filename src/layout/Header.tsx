@@ -30,8 +30,16 @@ export async function Header() {
   console.log("session?.user", session?.user);
 
   return (
-    <header className=" border-card sticky top-0 w-full bg-yellow">
-      <Container as={Stack} maxW={"6xl"} py={4} spacing={4} border={"2px"}>
+    <header>
+      <Container
+        as={Stack}
+        minH={"1xl"}
+        maxW={"full"}
+        py={4}
+        spacing={4}
+        border={"2px"}
+        bgColor={"wheat"}
+      >
         <Flex h={8} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
             <Link href={"/"}>Logo</Link>

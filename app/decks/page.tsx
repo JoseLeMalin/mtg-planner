@@ -25,16 +25,13 @@ import { Fragment, Suspense } from "react";
 import { getUserDecks } from "./decks.queries";
 import Image from "next/image";
 import { StatsCard } from "@/src/components/decks/StatCard";
-import {
-  formatDDMMYYYY,
-} from "@/src/lib/utils/dayjs/functions.utils";
+import { formatDDMMYYYY } from "@/src/lib/utils/dayjs/functions.utils";
 
 export default async function DeckList() {
   const session = await getRequiredAuthSession();
   const userId = session?.user.id;
 
   const decks = await getUserDecks({ userId });
-  console.log("decks to display2: ", decks);
 
   return (
     <Fragment>
@@ -44,17 +41,9 @@ export default async function DeckList() {
           <ButtonAuthSignIn />
         </div>
       ) : (
-        <div className="flex w-full">
-          {/* <div className="flex"> */}
-          {/* <Layout className={"flex size-full flex-col space-x-5 md:flex"}> */}
-          {/* <Link href={"/decks/create"}>
-                <Button>Create new deck</Button>
-              </Link> */}
-
-          {/* </Layout> */}
-          {/* </div> */}
+        <div>
           <Suspense>
-            <Card className="flex w-full" colorScheme="red" variant="outline">
+            <Card w={"100%"}>
               <CardHeader>Your decks </CardHeader>
               <CardBody>
                 <Box>

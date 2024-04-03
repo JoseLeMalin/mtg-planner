@@ -7,6 +7,7 @@ import {
   CardHeader,
   Container,
   Link,
+  Spacer,
   Spinner,
   Stack,
 } from "@chakra-ui/react";
@@ -66,57 +67,49 @@ const decks: Deck[] = [
 ];
 
 export default async function HomeComponent({ children }: PropsWithChildren) {
-  {
-    /* <Stack
-      spacing={4}
-      display={"flex"}
-      height={"100%"}
-      direction={{ base: "column", md: "row" }}
-      justify={{ base: "center", md: "space-between" }}
-      align={{ base: "center", md: "center" }}
-    > */
-  }
   return (
-    <>
-      {/* h={"100%"} w={"100%"} */}
-      <Container className="flex flex-col space-y-4 w-full bg-blue" mx={0} py={4}>
-        <Box className="relative my-4 space-y-4 bg-blue">
-          {/* <Suspense fallback={<Spinner />}> */}
-          <Card colorScheme="red" variant="outline">
-            <CardHeader>Your decks:</CardHeader>
+    <Container
+      display="flex"
+      w={"full"}
+      minW={"100%"}
+      minH={"75dvh"}
+      flexDirection={"row"}
+      bg={"blue"}
+      py={4}
+    >
+      <Suspense fallback={<Spinner />}>
+        <Box display="flex" w={"full"} flexDirection={"row"} bg={"pink"} my={4}>
+          <Card display="inherit" w={"full"} bg={"pink"} my={4}>
+            <CardHeader>Your Activity:</CardHeader>
             <CardBody>
-              <Box className="border-3 flex bg-orange">
+              <Box>
                 {/* <DecksList decks={decks} /> */}
                 <Link href="/decks"> Create new deck</Link>
               </Box>
             </CardBody>
           </Card>
-          {/* </Suspense> */}
         </Box>
-        <Box className="flex">
-          <Suspense fallback={<Spinner />}>
-            <Card>
-              <CardHeader>Your events:</CardHeader>
-              <CardBody>
-                <Box>
-                  <UserCalendar />
-                </Box>
-              </CardBody>
-            </Card>
-          </Suspense>
-        </Box>
-        <div>{children}</div>
-      </Container>
-      {/* <Card>
-        <CardHeader>Home</CardHeader>
-        <CardBody>
-        <Button>
-        <Link href="/admin"> Admin Page</Link>
-        </Button>
-        {children}
-        </CardBody>
-      </Card> */}
-      {/* </Stack>  */}
-    </>
+      </Suspense>
+
+      <Box
+        display="flex"
+        w={"full"}
+        flexDirection={"column"}
+        bg={"blue"}
+        my={4}
+      >
+        <Suspense fallback={<Spinner />}>
+          <Card>
+            <CardHeader>Your events:</CardHeader>
+            <CardBody>
+              <Box>
+                <UserCalendar />
+              </Box>
+            </CardBody>
+          </Card>
+        </Suspense>
+      </Box>
+      <div>{children}</div>
+    </Container>
   );
 }

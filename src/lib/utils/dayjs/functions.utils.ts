@@ -15,7 +15,7 @@ export const getUTCDatePostGres = (date?: string) => {
 
 export const formatDDMMYYYY = (date: string) => {
   console.log("date: ", date);
-  
+
   return dayjs(date).format("DD/MM/YYYY");
 };
 

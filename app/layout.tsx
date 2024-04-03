@@ -39,7 +39,7 @@ export default function RootLayout({
           <Providers>
             <Header />
             <Container
-              maxW={"6xl"}
+              maxW={"7xl"}
               p={8}
               h={"100%"}
               pos={"sticky"}
