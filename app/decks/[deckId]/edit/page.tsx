@@ -20,7 +20,7 @@ export default async function DeckEditPage({
   });
   return (
     <Fragment>
-      <DeckEditForm  />
+      <DeckEditForm />
     </Fragment>
   );
 }

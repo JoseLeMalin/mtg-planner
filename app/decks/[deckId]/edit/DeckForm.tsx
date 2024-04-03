@@ -1,7 +1,6 @@
 "use client";
 
 import { createDeckNextAction } from "@/src/actions/decks/decks.actions";
-import { getRequiredAuthSession } from "@/src/lib/auth";
 import { getUTCDatePostGres } from "@/src/lib/utils/dayjs/functions.utils";
 import { DeckInfered } from "@/src/types/decks.types";
 import {
@@ -14,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 // import { revalidatePath } from "next/cache";
 // import { redirect } from "next/navigation";
-import { FormEvent, Fragment, PropsWithChildren, useState } from "react";
+import { FormEvent, Fragment, useState } from "react";
 
 type DeckFormEdit = {
   defaultValue?: {
@@ -30,7 +29,7 @@ enum DeckType {
   OTHER = "other",
 }
 
-export default async function DeckEditForm({ defaultValue }: DeckFormEdit) {
+export default function DeckEditForm({ defaultValue }: DeckFormEdit) {
   const {
     id,
     name,

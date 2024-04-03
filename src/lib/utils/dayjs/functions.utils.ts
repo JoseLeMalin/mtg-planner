@@ -13,6 +13,12 @@ export const getUTCDatePostGres = (date?: string) => {
   return dayjs(date).utc().toDate();
 };
 
+export const formatDDMMYYYY = (date: string) => {
+  console.log("date: ", date);
+  
+  return dayjs(date).format("DD/MM/YYYY");
+};
+
 export const sortAscendDates = (datesToSort: string[]) =>
   datesToSort.sort((a, b) =>
     dayjs(a).isBefore(b) ? -1 : dayjs(a).isAfter(b) ? 1 : 0,

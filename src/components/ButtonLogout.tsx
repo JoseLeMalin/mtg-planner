@@ -19,7 +19,7 @@ export function ButtonLogout({ children }: PropsWithChildren) {
     <>
       <Button onClick={handleLogout} variant={"link"}>
         <div className="space-x-6">
-          <LogOut size={12}/>
+          <LogOut size={12} />
         </div>
         <div>{children}</div>
       </Button>

@@ -1,8 +1,7 @@
-import { DeckCreate, schemaDeck } from "@/src/types/decks.types";
-import { Deck } from "@prisma/client";
+import { DeckCreateInfered, schemaDeck } from "@/src/types/decks.types";
 import { prisma } from "src/lib/prisma";
 
-export const createUserDeck = async (newDeck: DeckCreate) => {
+export const createUserDeck = async (newDeck: DeckCreateInfered) => {
   const deck = await prisma.deck.create({
     data: { ...newDeck },
   });

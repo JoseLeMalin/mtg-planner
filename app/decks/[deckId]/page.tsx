@@ -16,7 +16,7 @@ export default async function DeckPage({
     <Fragment>
       <div>the deck</div>
       <Link href={`decks/${params.deckId}/edit`}>
-        <PenIcon /> 
+        <PenIcon />
       </Link>
     </Fragment>
   );
