@@ -116,28 +116,10 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
+  background-color: coral;
   flex-direction: column;
   flex-wrap: nowrap;
   overflow: auto;
-}
-
-.app-container {
-  /* flex: 1 1 0; */
-  /* flex-flow: column wrap; */
-  /* position:static; */
-  border-color: aqua;
-  /* background-color: green; */
-  border-width: 0.2rem;
-  /* width: 100%;
-  height: 100%; */
-  padding-top: 4px;
-  padding-left: 0px;
-  padding-bottom: 4px;
-  margin-left: 0;
-  /* margin: 0 auto;
-  align-items: center; */
-
-  /* background-color: green; */
 }
 
 .left-container {

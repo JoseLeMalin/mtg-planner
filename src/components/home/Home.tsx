@@ -79,7 +79,7 @@ export default async function HomeComponent({ children }: PropsWithChildren) {
   return (
     <>
       {/* h={"100%"} w={"100%"} */}
-      <Container className="flex flex-col space-y-4" mx={0} py={4}>
+      <Container className="flex flex-col space-y-4 w-full bg-blue" mx={0} py={4}>
         <Box className="relative my-4 space-y-4 bg-blue">
           {/* <Suspense fallback={<Spinner />}> */}
           <Card colorScheme="red" variant="outline">

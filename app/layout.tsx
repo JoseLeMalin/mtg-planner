@@ -8,6 +8,7 @@ import { Suspense } from "react";
 import { Box, Container, Flex, Spacer, Stack } from "@chakra-ui/react";
 import RootLoading from "./loading";
 import Script from "next/script";
+import { css } from "@emotion/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +38,15 @@ export default function RootLayout({
         <Container className={"main-container"}>
           <Providers>
             <Header />
-            <Container className={"app-container"}>
+            <Container
+              maxW={"6xl"}
+              p={8}
+              h={"100%"}
+              pos={"sticky"}
+              bg={"pink"}
+              centerContent
+              display="flex"
+            >
               <Suspense fallback={<RootLoading />}>{children}</Suspense>
             </Container>
             <Footer />
