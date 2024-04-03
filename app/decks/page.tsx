@@ -6,9 +6,11 @@ import {
   Card,
   CardBody,
   CardHeader,
+  Container,
   Editable,
   EditableInput,
   EditablePreview,
+  Flex,
   Stat,
   Tab,
   TabList,
@@ -26,6 +28,7 @@ import { getUserDecks } from "./decks.queries";
 import Image from "next/image";
 import { StatsCard } from "@/src/components/decks/StatCard";
 import { formatDDMMYYYY } from "@/src/lib/utils/dayjs/functions.utils";
+import { IoAddSharp } from "react-icons/io5";
 
 export default async function DeckList() {
   const session = await getRequiredAuthSession();
@@ -41,15 +44,25 @@ export default async function DeckList() {
           <ButtonAuthSignIn />
         </div>
       ) : (
-        <div>
+        <Container minW={"full"} w={"full"}>
           <Suspense>
-            <Card w={"100%"}>
-              <CardHeader>Your decks </CardHeader>
+            <Card minW={"full"} w={"full"}>
+              <CardHeader>
+                <Flex
+                  h={8}
+                  alignItems={"center"}
+                  justifyContent={"space-between"}
+                >
+                  Your decks
+                  <Box>
+                    <Link href={"/decks/create"}>
+                      <IoAddSharp size={"40px"} />
+                    </Link>
+                  </Box>
+                </Flex>
+              </CardHeader>
               <CardBody>
                 <Box>
-                  {/* <Box className="border-3 flex bg-orange"> */}
-                  {/* <DecksList decks={decks} /> */}
-
                   <Tabs variant="enclosed">
                     <TabList>
                       {decks.map((deckItem) => {
@@ -159,7 +172,7 @@ export default async function DeckList() {
               </CardBody>
             </Card>
           </Suspense>
-        </div>
+        </Container>
       )}
     </Fragment>
   );

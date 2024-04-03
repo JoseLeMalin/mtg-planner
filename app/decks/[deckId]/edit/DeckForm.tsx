@@ -4,15 +4,17 @@ import { createDeckNextAction } from "@/src/actions/decks/decks.actions";
 import { getUTCDatePostGres } from "@/src/lib/utils/dayjs/functions.utils";
 import { DeckInfered } from "@/src/types/decks.types";
 import {
+  Box,
   Button,
+  Card,
+  CardBody,
+  CardHeader,
   Heading,
   Input,
   Radio,
   RadioGroup,
   Stack,
 } from "@chakra-ui/react";
-// import { revalidatePath } from "next/cache";
-// import { redirect } from "next/navigation";
 import { FormEvent, Fragment, useState } from "react";
 
 type DeckFormEdit = {
@@ -25,8 +27,8 @@ type DeckFormEdit = {
 
 enum DeckType {
   COMMANDER = "Commander",
-  STANDARD = "standard",
-  OTHER = "other",
+  STANDARD = "Standard",
+  OTHER = "Other",
 }
 
 export default function DeckEditForm({ defaultValue }: DeckFormEdit) {
@@ -90,70 +92,79 @@ export default function DeckEditForm({ defaultValue }: DeckFormEdit) {
     //   },
     //   courseId: id,
     // });
+    // revalidatePath(`/decks/${deck.id}`);
+    // redirect(`/decks/${deck.id}`);
   };
-  // revalidatePath(`/decks/${deck.id}`);
-  // redirect(`/decks/${deck.id}`);
 
   return (
     <Fragment>
-      <RadioGroup value={deckType} onChange={handleDeckTypeChange}>
-        <Stack direction="row">
-          <Radio value={DeckType.COMMANDER}>COMMANDER</Radio>
-          <Radio value={DeckType.STANDARD}>STANDARD</Radio>
-          <Radio value={DeckType.OTHER}>OTHER</Radio>
-        </Stack>
-      </RadioGroup>
-      <div className="flex">
-        <form onSubmit={(e) => handleCreateDeck(e)}>
-          <Heading as="h3" size="sm">
-            Deck Name
-          </Heading>
-          <Input
-            defaultValue={name}
-            name="name"
-            id="name"
-            placeholder="Deck name"
-            size="md"
-          />
-          {deckType === DeckType.COMMANDER ? (
-            <>
+      <Card display={"flex"} minW={"75%"} mx={4}>
+        <CardHeader>
+          <RadioGroup value={deckType} onChange={handleDeckTypeChange}>
+            <Stack direction="row">
+              <Radio value={DeckType.COMMANDER}>{DeckType.COMMANDER}</Radio>
+              <Radio value={DeckType.STANDARD}>{DeckType.STANDARD}</Radio>
+              <Radio value={DeckType.OTHER}>{DeckType.OTHER}</Radio>
+            </Stack>
+          </RadioGroup>
+        </CardHeader>
+        <CardBody display={"flex"} flexDirection={"column"}>
+          <Box display={"flex"}>
+            <form onSubmit={(e) => handleCreateDeck(e)}>
               <Heading as="h3" size="sm">
-                Commander
+                Deck Name
               </Heading>
               <Input
-                defaultValue={commander}
-                name="commander"
+                defaultValue={name}
+                name="name"
                 id="name"
-                placeholder="commander"
+                placeholder="Deck name"
                 size="md"
               />
-            </>
-          ) : (
-            ""
-          )}
-          <Heading as="h3" size="sm">
-            Nb Cards
-          </Heading>
-          <Input
-            defaultValue={nbCards}
-            name="nbCards"
-            id="nbCards"
-            placeholder="Nb cards"
-            size="md"
-          />
-          <Heading as="h3" size="sm">
-            Image link
-          </Heading>
-          <Input
-            defaultValue={image}
-            name="image"
-            id="image"
-            placeholder="Image link"
-            size="md"
-          />
-          <Button type="submit">Submit</Button>
-        </form>
-      </div>
+              {deckType === DeckType.COMMANDER ? (
+                <>
+                  <Heading as="h3" size="sm">
+                    Commander
+                  </Heading>
+                  <Input
+                    defaultValue={commander}
+                    name="commander"
+                    id="name"
+                    placeholder="commander"
+                    size="md"
+                  />
+                </>
+              ) : (
+                ""
+              )}
+              <Heading as="h3" size="sm">
+                Nb Cards
+              </Heading>
+              <Input
+                defaultValue={nbCards}
+                name="nbCards"
+                id="nbCards"
+                placeholder="Nb cards"
+                size="md"
+              />
+              <Heading as="h3" size="sm">
+                Image link
+              </Heading>
+              <Input
+                defaultValue={image}
+                name="image"
+                id="image"
+                placeholder="Image link"
+                size="md"
+              />
+              <Button type="submit">Submit</Button>
+            </form>
+          </Box>
+          <Box display={"flex"}>
+            sgjkbskgk
+          </Box>
+        </CardBody>
+      </Card>
     </Fragment>
   );
 }
