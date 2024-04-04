@@ -4,10 +4,13 @@ import {
   getUTCDatePostGres,
   getUTCFormattedDate,
 } from "@/src/lib/utils/dayjs/functions.utils";
+import { Box } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { PropsWithChildren, useState } from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+
+// CSS
+import 'react-calendar/dist/Calendar.css';
 
 type ValuePiece = Date | null;
 
@@ -26,15 +29,16 @@ export default function UserCalendar({ children }: PropsWithChildren) {
     setValue(dayjs(test).toDate());
   };
   return (
-    <div>
+    <Box w={"full"}>
       <Calendar
         defaultActiveStartDate={value}
+        locale="en-GB"  //https://stackoverflow.com/questions/75112338/react-calendar-prop-aria-label-did-not-match-server-december-26-2022-clie
         minDate={getUTCDatePostGres(getUTCFormattedDate("2023-01-01"))}
         maxDate={getUTCDatePostGres(getUTCFormattedDate("2025-01-01"))}
         onChange={handleOnChange}
         value={value}
       />
-      {children}
-    </div>
+      <div>{children}</div>
+    </Box>
   );
 }

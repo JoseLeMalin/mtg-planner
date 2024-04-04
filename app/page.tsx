@@ -1,8 +1,6 @@
 import { ButtonAuthSignIn } from "@/src/components/ButtonSignIn";
 import HomeComponent from "@/src/components/home/Home";
-import { Layout } from "@/src/layout/Layout";
 import { getAuthSession } from "@/src/lib/auth";
-import { Button } from "@chakra-ui/react";
 import { Fragment } from "react";
 
 export default async function Home() {

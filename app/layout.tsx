@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { Providers } from "./Providers";
 import { Header } from "@/src/layout/Header";
 import { Footer } from "@/src/layout/Footer";
 import { Suspense } from "react";
 import { Box, Container, Flex, Spacer, Stack } from "@chakra-ui/react";
 import RootLoading from "./loading";
-import Script from "next/script";
-import { css } from "@emotion/react";
+
+// Global CSS
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
