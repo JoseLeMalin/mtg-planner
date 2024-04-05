@@ -33,7 +33,7 @@ export default function UserCalendar({ children }: PropsWithChildren) {
       <Calendar
         defaultActiveStartDate={value}
         locale="en-GB"  //https://stackoverflow.com/questions/75112338/react-calendar-prop-aria-label-did-not-match-server-december-26-2022-clie
-        minDate={getUTCDatePostGres(getUTCFormattedDate("2023-01-01"))}
+        minDate={getUTCDatePostGres(getUTCFormattedDate("2025-01-01"))}
         maxDate={getUTCDatePostGres(getUTCFormattedDate("2025-01-01"))}
         onChange={handleOnChange}
         value={value}
