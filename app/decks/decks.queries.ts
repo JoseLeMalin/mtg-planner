@@ -15,11 +15,14 @@ export const getUserDecks = async ({
       ownerId: userId,
     },
   });
-  const decksReworked = decks.map((deckItem) =>
-    useConvertDateToString(deckItem),
-  );
-  const parsedDecks = await schemaDeckArray.safeParseAsync(decksReworked);
-  if (!parsedDecks.success) return [];
+  // const decksReworked = decks.map((deckItem) =>
+  //   useConvertDateToString(deckItem),
+  // );
+  const parsedDecks = await schemaDeckArray.safeParseAsync(decks);
+  if (!parsedDecks.success) {
+    console.log("Parsed error: ", parsedDecks.error);
+    
+    return []};
 
   return parsedDecks.data;
 };

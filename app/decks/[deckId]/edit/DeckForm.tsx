@@ -1,6 +1,9 @@
 "use client";
 
-import { createDeckNextAction } from "@/src/actions/decks/decks.actions";
+import {
+  createDeckNextAction,
+  updateDeckNextAction,
+} from "@/src/actions/decks/decks.actions";
 import { getUTCDatePostGres } from "@/src/lib/utils/dayjs/functions.utils";
 import {
   DeckCreateInfered,
@@ -81,9 +84,10 @@ export default function DeckEditForm({ defaultValue }: DeckFormEdit) {
     },
   });
 
+  // jund https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/d/d3/Jund.jpg/revision/latest?cb=20171022202928
   // const handleCreateDeck : SubmitHandler<Inputs>= async (e: FormEvent<HTMLFormElement>) => {
   const handleCreateDeck: SubmitHandler<Inputs> = async (data) => {
-    const dataEdit: DeckCreateInfered = {
+    const deckData: DeckCreateInfered = {
       ...data,
       ownerId: "cluibebcn0000ufdxdpol42vk",
       createdBy: "cluibebcn0000ufdxdpol42vk",
@@ -93,11 +97,18 @@ export default function DeckEditForm({ defaultValue }: DeckFormEdit) {
 
     if (!id) {
       await createDeckNextAction({
-        data: dataEdit,
+        data: deckData,
       });
+
       toast({ description: `Deck ${name} created`, status: "success" });
+      return;
     }
 
+    await updateDeckNextAction({
+      data: { ...deckData, id },
+    });
+
+    toast({ description: `Deck ${name} edited`, status: "success" });
     // await updateCourseNextAction({
     //   data: {
     //     name,
