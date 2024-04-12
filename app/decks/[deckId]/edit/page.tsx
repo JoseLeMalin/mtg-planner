@@ -1,7 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, Suspense } from "react";
 import DeckEditForm from "./DeckForm";
 import { getUserDeck } from "../../decks.queries";
 import { getRequiredAuthSession } from "@/src/lib/auth";
+import { Spinner } from "@chakra-ui/react";
 
 export default async function DeckEditPage({
   params,
@@ -18,9 +19,15 @@ export default async function DeckEditPage({
     userId: session?.user.id,
     userPage: 5,
   });
+
+  if (!deck) {
+    return <p>Error: deck not found</p>;
+  }
   return (
     <Fragment>
-      <DeckEditForm />
+      <Suspense fallback={<Spinner />}>
+        <DeckEditForm defaultValue={{ deck: { ...deck } }} />
+      </Suspense>
     </Fragment>
   );
 }

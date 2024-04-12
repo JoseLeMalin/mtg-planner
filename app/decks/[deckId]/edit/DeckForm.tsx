@@ -26,7 +26,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
-import { FormEvent, Fragment, useState } from "react";
+import { Fragment, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type DeckFormEdit = {
@@ -72,7 +72,14 @@ export default function DeckEditForm({ defaultValue }: DeckFormEdit) {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>({
+    defaultValues: {
+      image,
+      commander,
+      name,
+      nbCards,
+    },
+  });
 
   // const handleCreateDeck : SubmitHandler<Inputs>= async (e: FormEvent<HTMLFormElement>) => {
   const handleCreateDeck: SubmitHandler<Inputs> = async (data) => {
@@ -118,16 +125,15 @@ export default function DeckEditForm({ defaultValue }: DeckFormEdit) {
         <CardBody display={"flex"} flexDirection={"column"}>
           <Box display={"flex"}>
             <form onSubmit={handleSubmit(handleCreateDeck)}>
-              <FormControl isInvalid={errors.name}>
+              <FormControl isInvalid={!!errors.name}>
                 <FormLabel htmlFor="name">Deck details</FormLabel>
                 <Heading as="h3" size="sm">
                   Deck Name
                 </Heading>
                 <Input
-                  defaultValue={name}
-                  {...register("name", { required: true, maxLength: 20 })}
-                  name="name"
+                  /* defaultValue={name} */
                   id="name"
+                  {...register("name", { required: true, maxLength: 20 })}
                   placeholder="Deck name"
                   size="md"
                 />
@@ -137,12 +143,11 @@ export default function DeckEditForm({ defaultValue }: DeckFormEdit) {
                       Commander
                     </Heading>
                     <Input
-                      defaultValue={commander}
+                      /* defaultValue={commander} */
                       {...register("commander", {
                         required: true,
                         maxLength: 20,
                       })}
-                      name="commander"
                       id="name"
                       placeholder="commander"
                       size="md"
@@ -154,24 +159,23 @@ export default function DeckEditForm({ defaultValue }: DeckFormEdit) {
                 <Heading as="h3" size="sm">
                   Nb Cards
                 </Heading>
-                <NumberInput
-                  defaultValue={nbCards ? nbCards : 0}
-                  // min={0}
-                  // max={20}
-                  // name="nbCards"
-                  id="nbCards"
-                  size="md"
-                  {...register("nbCards", { required: true, min: 0, max: 200 })}
-                >
-                  <NumberInputField />
+                <NumberInput size="md">
+                  <NumberInputField
+                    /* defaultValue={nbCards ? nbCards : 0} */
+                    id="nbCards"
+                    {...register("nbCards", {
+                      required: true,
+                      min: 0,
+                      max: 200,
+                    })}
+                  />
                 </NumberInput>
                 <Heading as="h3" size="sm">
                   Image link
                 </Heading>
                 <Input
-                  defaultValue={image}
+                  /* defaultValue={image} */
                   {...register("image", { required: true })}
-                  name="image"
                   id="image"
                   placeholder="Image link"
                   size="md"

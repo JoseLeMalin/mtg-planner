@@ -4,18 +4,16 @@ import utc from "dayjs/plugin/utc";
 
 dayjs.extend(utc);
 
-export const getUTCFormattedDate = (date?: string) => {
+export const getUTCFormattedDate = (date?: string | Date) => {
   if (!date) return dayjs().utc().toISOString();
   return dayjs(date).utc().toISOString();
 };
-export const getUTCDatePostGres = (date?: string) => {
+export const getUTCDatePostGres = (date?: string | Date) => {
   if (!date) return dayjs().utc().toDate();
   return dayjs(date).utc().toDate();
 };
 
-export const formatDDMMYYYY = (date: string) => {
-  console.log("date: ", date);
-
+export const formatDDMMYYYY = (date: string | Date) => {
   return dayjs(date).format("DD/MM/YYYY");
 };
 

@@ -41,7 +41,7 @@ export const getUserDeck = async ({
   });
 
   const parsedDeck = await schemaDeck.safeParseAsync(deck);
-  if (!parsedDeck.success) return [];
+  if (!parsedDeck.success) throw new Error("Deck not found");
 
   return parsedDeck.data;
 };

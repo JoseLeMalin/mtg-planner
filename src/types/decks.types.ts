@@ -10,8 +10,8 @@ export const schemaDeck = z.object({
   commander: z.string().optional(),
   nbVictories: z.number().optional(),
   nbDefeats: z.number().optional(),
-  createdAt: z.string().datetime(),
-  updatedAt: z.string().datetime().optional(),
+  createdAt: z.date(),
+  updatedAt: z.date().optional(),
   createdBy: z.string(),
   ownerId: z.string(),
 });
