@@ -30,7 +30,7 @@ import {
 } from "lucide-react";
 import { Deck } from "./Home";
 
-type UserDecklist = { decks: Deck[] } & PropsWithChildren;
+type TUserDecklist = { decks: Deck[] } & PropsWithChildren;
 
 const settings = {
   dots: true,
@@ -70,7 +70,7 @@ const settings = {
   ],
 };
 
-export default function UserDecklist({ decks, children }: UserDecklist) {
+export default function UserDecklist({ decks, children }: TUserDecklist) {
   const [slider, setSlider] = useState<Slider | null>(null);
   const [width, setWidth] = useState(1000);
   // These are the breakpoints which changes the position of the

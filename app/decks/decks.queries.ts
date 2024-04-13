@@ -1,7 +1,4 @@
-import { useConvertDateToString } from "@/src/hooks/useConvertDateToString";
-import { getUTCFormattedDate } from "@/src/lib/utils/dayjs/functions.utils";
 import { schemaDeck, schemaDeckArray } from "@/src/types/decks.types";
-import { Deck } from "@prisma/client";
 import { prisma } from "src/lib/prisma";
 
 export const getUserDecks = async ({
@@ -21,8 +18,8 @@ export const getUserDecks = async ({
   const parsedDecks = await schemaDeckArray.safeParseAsync(decks);
   if (!parsedDecks.success) {
     console.log("Parsed error: ", parsedDecks.error);
-    
-    return []};
+    return [];
+  }
 
   return parsedDecks.data;
 };
