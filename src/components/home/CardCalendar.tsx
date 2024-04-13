@@ -10,7 +10,7 @@ import { PropsWithChildren, useState } from "react";
 import Calendar from "react-calendar";
 
 // CSS
-import 'react-calendar/dist/Calendar.css';
+import "react-calendar/dist/Calendar.css";
 
 type ValuePiece = Date | null;
 
@@ -29,12 +29,12 @@ export default function UserCalendar({ children }: PropsWithChildren) {
     setValue(dayjs(test).toDate());
   };
   return (
-    <Box w={"full"}>
+    <Box className="flex w-full">
       <Calendar
         defaultActiveStartDate={value}
-        locale="en-GB"  //https://stackoverflow.com/questions/75112338/react-calendar-prop-aria-label-did-not-match-server-december-26-2022-clie
-        minDate={getUTCDatePostGres(getUTCFormattedDate("2025-01-01"))}
-        maxDate={getUTCDatePostGres(getUTCFormattedDate("2025-01-01"))}
+        locale="en-GB" //https://stackoverflow.com/questions/75112338/react-calendar-prop-aria-label-did-not-match-server-december-26-2022-clie
+        minDate={getUTCDatePostGres("2024-01-01")}
+        maxDate={getUTCDatePostGres(dayjs().add(3, "y").toDate())}
         onChange={handleOnChange}
         value={value}
       />

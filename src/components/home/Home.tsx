@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 import { getAuthSession } from "@/src/lib/auth";
 import {
   Box,
@@ -16,6 +17,7 @@ import { getUTCFormattedDate } from "@/src/lib/utils/dayjs/functions.utils";
 import { v4 } from "uuid";
 import DecksList from "./DecksList";
 import UserCalendar from "./CardCalendar";
+import CardBigCalendar from "./CardBigCalendar";
 
 export type Deck = {
   id: string;
@@ -69,17 +71,18 @@ const decks: Deck[] = [
 export default async function HomeComponent({ children }: PropsWithChildren) {
   return (
     <Container
-      display="flex"
-      w={"full"}
-      minW={"100%"}
-      minH={"75dvh"}
-      flexDirection={"row"}
-      bg={"blue"}
-      py={4}
+      className="min-h-75dvh flex w-full min-w-full flex-col bg-pink py-4"
+      // display="flex"
+      // w={"full"}
+      // minW={"100%"}
+      // minH={"75dvh"}
+      // flexDirection={"row"}
+      // bg={"blue"}
+      // py={4}
     >
-      <Suspense fallback={<Spinner />}>
-        <Box display="flex" w={"full"} flexDirection={"row"} bg={"pink"} my={4}>
-          <Card display="inherit" w={"full"} bg={"pink"} my={4}>
+      <Box className=" my-4 flex w-full basis-12 flex-row bg-pink">
+        <Suspense fallback={<Spinner />}>
+          <Card className="inherit w-full flex bg-pink my-4 flex-row">
             <CardHeader>Your Activity:</CardHeader>
             <CardBody>
               <Box>
@@ -88,18 +91,12 @@ export default async function HomeComponent({ children }: PropsWithChildren) {
               </Box>
             </CardBody>
           </Card>
-        </Box>
-      </Suspense>
+        </Suspense>
+      </Box>
 
-      <Box
-        display="flex"
-        w={"full"}
-        flexDirection={"column"}
-        bg={"blue"}
-        my={4}
-      >
+      <Box className="my-4 flex w-full basis-12 flex-row bg-blue">
         <Suspense fallback={<Spinner />}>
-          <Card>
+          <Card className="inherit bg-black my-4 flex w-full flex-row">
             <CardHeader>Your events:</CardHeader>
             <CardBody>
               <Box>
@@ -109,7 +106,18 @@ export default async function HomeComponent({ children }: PropsWithChildren) {
           </Card>
         </Suspense>
       </Box>
-      <div>{children}</div>
+      <Box className="my-4 flex w-full basis-12 flex-row bg-gray-light">
+        <Suspense fallback={<Spinner />}>
+          <Card className="inherit bg-black my-4 flex w-full flex-row">
+            <CardHeader>Your events:</CardHeader>
+            <CardBody>
+              <Box>
+                <CardBigCalendar />
+              </Box>
+            </CardBody>
+          </Card>
+        </Suspense>
+      </Box>
     </Container>
   );
 }
