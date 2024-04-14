@@ -1,8 +1,9 @@
 import { ButtonAuthSignIn } from "@/src/components/ButtonSignIn";
+import { StatsCard } from "@/src/components/decks/StatCard";
 import { getRequiredAuthSession } from "@/src/lib/auth";
+import { formatDDMMYYYY } from "@/src/lib/utils/dayjs/functions.utils";
 import {
   Box,
-  Button,
   Card,
   CardBody,
   CardHeader,
@@ -12,24 +13,19 @@ import {
   EditablePreview,
   Flex,
   Spacer,
-  Stat,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
-  Tabs,
-  Tag,
+  Tabs
 } from "@chakra-ui/react";
-import { IoCreate } from "react-icons/io5";
-import { PiFilePlusBold } from "react-icons/pi";
-import { HiOutlineWrench } from "react-icons/hi2";
+import Image from "next/image";
 import Link from "next/link";
 import { Fragment, Suspense } from "react";
-import { getUserDecks } from "./decks.queries";
-import Image from "next/image";
-import { StatsCard } from "@/src/components/decks/StatCard";
-import { formatDDMMYYYY } from "@/src/lib/utils/dayjs/functions.utils";
+import { HiOutlineWrench } from "react-icons/hi2";
 import { IoAddSharp } from "react-icons/io5";
+import { PiFilePlusBold } from "react-icons/pi";
+import { getUserDecks } from "./decks.queries";
 
 export default async function DeckList() {
   const session = await getRequiredAuthSession();
@@ -80,22 +76,22 @@ export default async function DeckList() {
                           <Card>
                             <CardBody>
                               {/* <Flex minWidth="max-content" alignItems="center"> */}
-                                <Editable
-                                  className="basis-1/2"
-                                  defaultValue={deckItem.name}
-                                >
-                                  <EditablePreview />
-                                  <EditableInput />
-                                </Editable>
-                                <Editable
-                                  className="basis-1/2"
-                                  defaultValue={deckItem.nbCards.toString()}
-                                >
-                                  <EditablePreview />
-                                  <EditableInput />
-                                </Editable>
+                              <Editable
+                                className="basis-1/2"
+                                defaultValue={deckItem.name}
+                              >
+                                <EditablePreview />
+                                <EditableInput />
+                              </Editable>
+                              <Editable
+                                className="basis-1/2"
+                                defaultValue={deckItem.nbCards.toString()}
+                              >
+                                <EditablePreview />
+                                <EditableInput />
+                              </Editable>
 
-                                <Spacer />
+                              <Spacer />
                               {/* </Flex> */}
                               <div className="m-4 basis-1">
                                 <Image
@@ -112,45 +108,45 @@ export default async function DeckList() {
                                 />
                               </div>
                               {/* <div className="flex flex-row"> */}
-                                <div className="flex basis-1/2 flex-row">
-                                  <PiFilePlusBold
-                                    size={"1.5rem"}
-                                    className="basis-1/4"
-                                    title="Created on"
-                                  />
-                                  <Editable
-                                    className="basis-3/4"
-                                    defaultValue={formatDDMMYYYY(
-                                      deckItem.createdAt,
-                                    )}
-                                  >
-                                    <EditablePreview />
-                                    <EditableInput />
-                                  </Editable>
-                                </div>
-                                <div className="flex basis-1/2 flex-row">
-                                  {deckItem?.updatedAt ? (
-                                    <>
-                                      <HiOutlineWrench
-                                        size={"1.5rem"}
-                                        className="basis-1/4"
-                                        title="Updated on"
-                                      />
-
-                                      <Editable
-                                        className="basis-3/4"
-                                        defaultValue={formatDDMMYYYY(
-                                          deckItem.updatedAt,
-                                        )}
-                                      >
-                                        <EditablePreview />
-                                        <EditableInput />
-                                      </Editable>
-                                    </>
-                                  ) : (
-                                    <HiOutlineWrench title="Last update" />
+                              <div className="flex basis-1/2 flex-row">
+                                <PiFilePlusBold
+                                  size={"1.5rem"}
+                                  className="basis-1/4"
+                                  title="Created on"
+                                />
+                                <Editable
+                                  className="basis-3/4"
+                                  defaultValue={formatDDMMYYYY(
+                                    deckItem.createdAt,
                                   )}
-                                </div>
+                                >
+                                  <EditablePreview />
+                                  <EditableInput />
+                                </Editable>
+                              </div>
+                              <div className="flex basis-1/2 flex-row">
+                                {deckItem?.updatedAt ? (
+                                  <>
+                                    <HiOutlineWrench
+                                      size={"1.5rem"}
+                                      className="basis-1/4"
+                                      title="Updated on"
+                                    />
+
+                                    <Editable
+                                      className="basis-3/4"
+                                      defaultValue={formatDDMMYYYY(
+                                        deckItem.updatedAt,
+                                      )}
+                                    >
+                                      <EditablePreview />
+                                      <EditableInput />
+                                    </Editable>
+                                  </>
+                                ) : (
+                                  <HiOutlineWrench title="Last update" />
+                                )}
+                              </div>
                               {/* </div> */}
                               <Editable defaultValue={deckItem.name}>
                                 <EditablePreview />

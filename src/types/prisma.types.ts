@@ -1,12 +1,10 @@
 import type {
   Account,
   Deck,
-  Session,
-  User,
-  Role,
   Prisma,
   PrismaClient,
-  VerificationToken,
+  Session,
+  User
 } from "@prisma/client";
 import { DeckCreateInfered, DeckUpdateInfered } from "./decks.types";
 

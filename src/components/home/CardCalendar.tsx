@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  getUTCDatePostGres,
-  getUTCFormattedDate,
-} from "@/src/lib/utils/dayjs/functions.utils";
+import { getUTCDatePostGres } from "@/src/lib/utils/dayjs/functions.utils";
 import { Box } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { PropsWithChildren, useState } from "react";

@@ -2,5 +2,9 @@
   "search.exclude": {
     "**/.pnp.*": true
   },
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.removeUnusedImports": true
+  }
 }
