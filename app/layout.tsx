@@ -1,11 +1,11 @@
+import { Footer } from "@/src/layout/Footer";
+import { Header } from "@/src/layout/Header";
+import { Container } from "@chakra-ui/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Providers } from "./Providers";
-import { Header } from "@/src/layout/Header";
-import { Footer } from "@/src/layout/Footer";
 import { Suspense } from "react";
-import { Box, Container, Flex, Spacer, Stack } from "@chakra-ui/react";
 import RootLoading from "./loading";
+import { Providers } from "./Providers";
 
 // Global CSS
 import "./globals.css";
@@ -39,13 +39,18 @@ export default function RootLayout({
           <Providers>
             <Header />
             <Container
+              display="flex"
+              h={"100%"}
               maxW={"7xl"}
               p={8}
-              h={"100%"}
-              pos={"sticky"}
-              bg={"pink"}
-              centerContent
-              display="flex"
+              bg={"grey"}
+              flexDirection={"column"}
+              justifyContent={{ base: "center", md: "space-between" }}
+              alignContent={{ base: "center", md: "center" }}
+              // centerContent
+              // direction={{ base: "column", md: "row" }}
+              // justify={{ base: "center", md: "space-between" }}
+              // align={{ base: "center", md: "center" }}
             >
               <Suspense fallback={<RootLoading />}>{children}</Suspense>
             </Container>

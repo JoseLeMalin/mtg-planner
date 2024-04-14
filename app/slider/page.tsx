@@ -1,9 +1,10 @@
 import SliderTest from "@/src/components/home/SliderTest";
+import { Container } from "@chakra-ui/react";
 
 export default async function AdminHomePage() {
   return (
-    <div className="flex ">
+    <Container display={"flex"} w={"full"} minW={"full"} flexDir={"column"}>
       <SliderTest />
-    </div>
+    </Container>
   );
 }

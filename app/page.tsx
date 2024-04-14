@@ -14,7 +14,7 @@ export default async function Home() {
             <ButtonAuthSignIn />
           </div>
         ) : (
-          <div className="flex w-full">
+          <div className="flex w-full h-full">
             {/* <Layout className={"flex size-full flex-col space-x-5 md:flex"}> */}
             <HomeComponent />
 

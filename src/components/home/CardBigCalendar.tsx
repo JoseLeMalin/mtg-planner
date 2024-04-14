@@ -80,15 +80,16 @@ export default function CardBigCalendar({ children }: PropsWithChildren) {
     [setEvents],
   );
   return (
-    <Box className="flex w-full">
+    <Box display={"flex"} w={"full"} h={"full"}>
       <Card>
         <CardHeader>Big Calendar</CardHeader>
-        <CardBody>
+        <CardBody display={"flex"} w={"full"} h={"full"}>
           <Calendar
+            defaultDate={dayjs().toDate()}
             date={date}
             localizer={localizer}
-            startAccessor="start"
-            endAccessor="end"
+            // startAccessor="start"
+            // endAccessor="end"
             events={events}
             onDrillDown={onDrillDown}
             onView={onView}
@@ -96,7 +97,7 @@ export default function CardBigCalendar({ children }: PropsWithChildren) {
             view={view}
             onSelectEvent={handleSelectEvent}
             onSelectSlot={handleSelectSlot}
-            style={{ height: 1000, width: "auto" }}
+            style={{  width: 1000, minWidth:500 }}
             selectable
           />
         </CardBody>

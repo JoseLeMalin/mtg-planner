@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
 //import Slider from "@ant-design/react-slick";
-import { getUTCFormattedDate } from "@/src/lib/utils/dayjs/functions.utils";
-import { v4 } from "uuid";
 import { Deck } from "@/src/components/home/Home";
+import { getUTCFormattedDate } from "@/src/lib/utils/dayjs/functions.utils";
+import Slider from "react-slick";
+import { v4 } from "uuid";
+
+import { Box } from "@chakra-ui/react";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 // https://github.com/akiran/react-slick/issues/1837
 // https://github.com/akiran/react-slick/issues/1837
@@ -53,16 +57,36 @@ const decks: Deck[] = [
 
 export default function SliderTest() {
   var settings = {
-    dots: true,
+    focusOnSelect: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    speed: 500,
+    dots: true,
   };
   return (
-    <div className="relative h-screen flex-1 md:flex">
-      {/* <Slider {...settings}>
-        <div>
+    <div>
+      <div>Click on any slide to select and make it current slide</div>
+      <Slider {...settings}>
+        {decks.map((deckItem, index) => {
+          return (
+            <Box
+              key={`${deckItem.id}-${index}`}
+              onClick={() => console.log("click")}
+              mx={4}
+              bg={"purple"}
+              w={"full"}
+              h={"200px"}
+              display={"flex block"}
+              content="center"
+              // className="mx-4 bg-purple w-full h-10 inline-block"
+            >
+                <h3>{deckItem.name}</h3>
+          
+            </Box>
+          );
+        })}
+        {/* <div bg-color="red">
           <h3>1</h3>
         </div>
         <div>
@@ -79,8 +103,8 @@ export default function SliderTest() {
         </div>
         <div>
           <h3>6</h3>
-        </div>
-      </Slider> */}
+        </div> */}
+      </Slider>
     </div>
   );
 }

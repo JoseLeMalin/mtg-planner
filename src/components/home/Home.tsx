@@ -23,7 +23,14 @@ export type Deck = {
 
 export default async function HomeComponent() {
   return (
-    <Container className="min-h-75dvh flex w-full min-w-full flex-col bg-pink py-4">
+    <Container
+      minH={"75dvh"}
+      display={"flex"}
+      w={"full"}
+      minW={"full"}
+      flexDir={"column"}
+      bg={"pink"}
+    >
       <Box className=" my-4 flex w-full basis-12 flex-row bg-pink">
         <Suspense fallback={<Spinner />}>
           <Card className="inherit w-full flex bg-pink my-4 flex-row">
