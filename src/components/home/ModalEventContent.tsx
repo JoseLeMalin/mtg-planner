@@ -8,16 +8,18 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
-    UseDisclosureProps
+    UseDisclosureProps,
 } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
 
 type TModalEventContent = Required<
   Pick<UseDisclosureProps, "onOpen" | "onClose" | "isOpen">
-> &
-  PropsWithChildren;
+> & {
+  event: { id: number; title: string; start: Date; end: Date };
+} & PropsWithChildren;
 
 export default function ModalEventContent({
+  event,
   onOpen,
   onClose,
   isOpen,
@@ -32,7 +34,12 @@ export default function ModalEventContent({
         <ModalHeader>Modal Title</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <p>{children}</p>
+          <div>
+            <p>{event.id}</p>
+            <p>{event.title}</p>
+            <p>Start: {event.start.toString()}</p>
+            <p>End: {event.end.toString()}</p>
+          </div>
         </ModalBody>
 
         <ModalFooter>

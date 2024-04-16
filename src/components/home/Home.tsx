@@ -10,9 +10,6 @@ import {
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { Suspense } from "react";
-import {
-  Event,
-} from "react-big-calendar";
 import CardBigCalendar from "./CardBigCalendar";
 
 export type Deck = {
@@ -25,7 +22,7 @@ export type Deck = {
   nbVictories: number;
 };
 
-type EventCalendar = { id: number } & Event;
+type EventCalendar = { id: number; title: string; start: Date; end: Date };
 export default async function HomeComponent() {
 const events: EventCalendar[] = [
   {
