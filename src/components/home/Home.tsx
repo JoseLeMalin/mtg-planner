@@ -8,7 +8,11 @@ import {
   Link,
   Spinner,
 } from "@chakra-ui/react";
+import dayjs from "dayjs";
 import { Suspense } from "react";
+import {
+  Event,
+} from "react-big-calendar";
 import CardBigCalendar from "./CardBigCalendar";
 
 export type Deck = {
@@ -21,7 +25,28 @@ export type Deck = {
   nbVictories: number;
 };
 
+type EventCalendar = { id: number } & Event;
 export default async function HomeComponent() {
+const events: EventCalendar[] = [
+  {
+    id: 1,
+    title: "Long Event",
+    start: dayjs("2024-04-15T13:45:00-05:00").toDate(),
+    end: dayjs("2024-04-15T14:45:00-05:00").toDate(),
+  },
+  {
+    id: 2,
+    title: "Long Event",
+    start: dayjs("2024-04-14T13:45:00-05:00").toDate(),
+    end: dayjs("2024-04-14T14:45:00-05:00").toDate(),
+  },
+  {
+    id: 3,
+    title: "Long Event",
+    start: dayjs("2024-04-16T13:45:00-05:00").toDate(),
+    end: dayjs("2024-04-17T14:45:00-05:00").toDate(),
+  },
+];
   return (
     <Container
       minH={"75dvh"}
@@ -63,7 +88,7 @@ export default async function HomeComponent() {
             <CardHeader>Your events:</CardHeader>
             <CardBody>
               <Box>
-                <CardBigCalendar />
+                <CardBigCalendar events={events} />
               </Box>
             </CardBody>
           </Card>

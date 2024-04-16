@@ -1,30 +1,58 @@
 "use client";
 import { getUTCDatePostGres } from "@/src/lib/utils/dayjs/functions.utils";
-import { Box, Card, CardBody, CardHeader } from "@chakra-ui/react";
-import { Value } from "@prisma/client/runtime/library";
+import {
+  Box,
+  Card,
+  CardBody,
+  CardHeader,
+  useDisclosure,
+} from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { PropsWithChildren, useCallback, useState } from "react";
 import { Calendar, dayjsLocalizer, View, Views } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import ModalEventContent from "./ModalEventContent";
+
+type EventCalendar = { id: number; title: string; start: Date; end: Date };
+const events: EventCalendar[] = [
+  {
+    id: 1,
+    title: "Long Event",
+    start: dayjs("2024-04-15T13:45:00-05:00").toDate(),
+    end: dayjs("2024-04-15T14:45:00-05:00").toDate(),
+  },
+  {
+    id: 2,
+    title: "Long Event",
+    start: dayjs("2024-04-14T13:45:00-05:00").toDate(),
+    end: dayjs("2024-04-14T14:45:00-05:00").toDate(),
+  },
+  {
+    id: 3,
+    title: "Long Event",
+    start: dayjs("2024-04-16T13:45:00-05:00").toDate(),
+    end: dayjs("2024-04-17T14:45:00-05:00").toDate(),
+  },
+];
+type TCardBigCalendar = {
+  events: EventCalendar[];
+} & PropsWithChildren;
 
 const localizer = dayjsLocalizer(dayjs);
-export default function CardBigCalendar({ children }: PropsWithChildren) {
+export default function CardBigCalendar({
+  events,
+  children,
+}: TCardBigCalendar) {
   const [value, setValue] = useState(getUTCDatePostGres());
+  const [eventModal, setEventModal] = useState<EventCalendar>();
   const [view, setView] = useState<View>(Views.MONTH);
   const [date, setDate] = useState(dayjs().toDate());
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const onNavigate = useCallback(
     (newDate: Date) => setDate(newDate),
     [setDate],
   );
-
-  const [myEvents, setEvents] = useState<
-    {
-      id: number;
-      title: string;
-      start: Date;
-      end: Date;
-    }[]
-  >([]);
+  const [myEvents, setEvents] = useState<EventCalendar[]>([]);
   const onView = useCallback((newView: View) => setView(newView), [setView]);
   const onDrillDown = useCallback(
     (newDate: Date) => {
@@ -33,38 +61,22 @@ export default function CardBigCalendar({ children }: PropsWithChildren) {
     },
     [setDate, setView],
   );
-  const events = [
-    {
-      id: 1,
-      title: "Long Event",
-      start: dayjs("2024-04-15T13:45:00-05:00").toDate(),
-      end: dayjs("2024-04-15T14:45:00-05:00").toDate(),
-    },
-    {
-      id: 2,
-      title: "Long Event",
-      start: dayjs("2024-04-14T13:45:00-05:00").toDate(),
-      end: dayjs("2024-04-14T14:45:00-05:00").toDate(),
-    },
-    {
-      id: 3,
-      title: "Long Event",
-      start: dayjs("2024-04-16T13:45:00-05:00").toDate(),
-      end: dayjs("2024-04-17T14:45:00-05:00").toDate(),
-    },
-  ];
-  const handleOnChange = (nextValue: Value) => {
-    console.log("Value?: ", nextValue);
 
-    if (!nextValue) {
-      return;
-    }
-    const test = nextValue.toString();
-    setValue(dayjs(test).toDate());
-  };
+  // const handleOnChange = (nextValue: Value) => {
+  //   console.log("Value?: ", nextValue);
+  //
+  //   if (!nextValue) {
+  //     return;
+  //   }
+  //   const test = nextValue.toString();
+  //   setValue(dayjs(test).toDate());
+  // };
   const handleSelectEvent = useCallback(
-    (event: { id: number; title: string; start: Date; end: Date }) =>
-      window.alert(event.title),
+    (event: { id: number; title: string; start: Date; end: Date }) => {
+      //window.alert(event.title),
+      setEventModal({ ...event });
+      onOpen();
+    },
     [],
   );
   const handleSelectSlot = useCallback(
@@ -97,11 +109,37 @@ export default function CardBigCalendar({ children }: PropsWithChildren) {
             view={view}
             onSelectEvent={handleSelectEvent}
             onSelectSlot={handleSelectSlot}
-            style={{  width: 1000, minWidth:500 }}
+            style={{ width: 1000, minWidth: 500 }}
             selectable
           />
         </CardBody>
       </Card>
+
+      <ModalEventContent onOpen={onOpen} onClose={onClose} isOpen={isOpen}>
+        <div>
+          <p>test modal n2</p>
+          <p>{eventModal?.id}</p>
+        </div>
+      </ModalEventContent>
+
+      {/*       <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <p>test modal</p>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant="ghost">Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal> */}
+
       {children}
     </Box>
   );

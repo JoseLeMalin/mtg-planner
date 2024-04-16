@@ -67,4 +67,3 @@ pnpm add -D @faker-js/faker @types/node @types/react @types/react-dom @types/uui
     
 ## Security    
     https://cheatsheetseries.owasp.org/
-
