@@ -105,6 +105,7 @@ export default async function DeckList() {
                                   height="100"
                                   priority={false}
                                   alt={`Deck ${deckItem.name} picture`}
+                                  loading="lazy"
                                 />
                               </div>
                               {/* <div className="flex flex-row"> */}

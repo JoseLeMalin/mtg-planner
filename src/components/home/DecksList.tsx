@@ -1,5 +1,6 @@
 "use client";
 
+import Slider from "@ant-design/react-slick";
 import {
   Box,
   Button,
@@ -8,26 +9,22 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
-  Container,
   Divider,
   Heading,
   IconButton,
-  Link,
   Spinner,
   Stack,
-  useBreakpointValue,
   Text,
+  useBreakpointValue
 } from "@chakra-ui/react";
-import { Fragment, PropsWithChildren, Suspense, useState } from "react";
-import Slider from "@ant-design/react-slick";
-import Image from "next/image";
 import {
   ArrowBigLeftIcon,
   ArrowBigRightIcon,
-  ArrowUpLeftFromSquareIcon,
   PencilRuler,
-  Trash2,
+  Trash2
 } from "lucide-react";
+import Image from "next/image";
+import { PropsWithChildren, Suspense, useState } from "react";
 import { Deck } from "./Home";
 
 type TUserDecklist = { decks: Deck[] } & PropsWithChildren;
@@ -158,6 +155,7 @@ export default function UserDecklist({ decks, children }: TUserDecklist) {
                       width={80}
                       height={80}
                       priority={false}
+                      loading="lazy"
                     />
                   </Suspense>
                   <Stack mt="6" spacing="3">

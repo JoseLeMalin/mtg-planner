@@ -67,3 +67,7 @@ pnpm add -D @faker-js/faker @types/node @types/react @types/react-dom @types/uui
     
 ## Security    
     https://cheatsheetseries.owasp.org/
+
+
+## Other links:
+    Improved way loading images: https://www.youtube.com/watch?v=hJ7Rg1821Q0
