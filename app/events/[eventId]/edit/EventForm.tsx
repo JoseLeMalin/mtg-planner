@@ -21,14 +21,24 @@ import {
   FormLabel,
   Heading,
   Input,
+  InputGroup,
+  InputLeftAddon,
+  InputRightElement,
   List,
   ListIcon,
   ListItem,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuItemOption,
+  MenuList,
+  MenuOptionGroup,
   Text,
   Tooltip,
   useToast,
 } from "@chakra-ui/react";
-import { FilePenLine, FilePlus2 } from "lucide-react";
+import { FilePenLine, FilePlus2, Plus } from "lucide-react";
 import { Fragment, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -101,13 +111,28 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
 
   return (
     <Fragment>
-      <Card mx={2}>
-        <CardHeader display={"flex"} justifyContent={"center"} alignItems={"center"}>
-            Event: {name}
+      <Card className="event-form-card" mx={2}>
+        <CardHeader
+          className="event-form-card-header"
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          Event: {name}
         </CardHeader>
-        <CardBody display={"flex"} flexDirection={"column"} gap={6} px={2}>
-          <Flex direction={"column"} justifyContent={"space-between"}>
-            <Flex flexDirection={"row-reverse"}>
+        <CardBody
+          className="event-form-card-body"
+          display={"flex"}
+          flexDirection={"column"}
+          gap={6}
+          px={2}
+        >
+          <Flex
+            className="date-icons"
+            direction={"column"}
+            justifyContent={"space-between"}
+          >
+            <Flex className="date-created" flexDirection={"row-reverse"}>
               <Tooltip label="Created on">
                 <FilePlus2 size={15} />
               </Tooltip>
@@ -116,7 +141,10 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
               </Text>
             </Flex>
             {updatedAt ? (
-              <Flex flexDirection={"row-reverse"}>
+              <Flex
+                className="date-icons-updated"
+                flexDirection={"row-reverse"}
+              >
                 <Tooltip label="Last update">
                   <FilePenLine size={15} />
                 </Tooltip>
@@ -126,14 +154,13 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
               ""
             )}
           </Flex>
-          <Flex
-            direction={"column"}
-            justifyContent={"space-between"}
-            gap={4}
-            w={"full"}
-          >
+          <Flex className="event-form" direction={"column"} gap={4} w={"full"}>
             <form onSubmit={handleSubmit(handleEditEvent)}>
-              <FormControl flexDirection={"column"} isInvalid={!!errors.name}>
+              <FormControl
+                className="event-form-control"
+                flexDirection={"column"}
+                isInvalid={!!errors.name}
+              >
                 <Heading as="h1" size="sm">
                   Event Title
                 </Heading>
@@ -141,8 +168,8 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
                   <Input
                     /* defaultValue={name} */
                     id="name"
-                    {...register("name", { required: true, maxLength: 20 })}
-                    placeholder="Deck name"
+                    {...register("name", { required: true, maxLength: 100 })}
+                    placeholder="Event name"
                     size="md"
                   />
                 </FormLabel>
@@ -150,10 +177,65 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
                 <Heading as="h3" size="sm">
                   Choose the persons to invite
                 </Heading>
-                <Input
+                {/* <Select
+                  {...register("invitedPeople", { required: true })}
+                  placeholder="small size"
+                  size="sm"
+                  onChange={(e) =>
+                    setInvitedPeopleList(e.target.value.split(","))
+                  }
+                > */}
+                <Menu closeOnSelect={false}>
+                  <MenuButton as={Button} colorScheme="blue">
+                    MenuItem
+                  </MenuButton>
+                  <MenuList
+                    id="invitedPeople"
+                    minWidth="240px"
+                    {...register("invitedPeople", { required: true })}
+                  >
+                    <MenuOptionGroup
+                      title={"Participants"}
+                      type="checkbox"
+                      onChange={(e) => console.log("event SHE: ", e)}
+                    >
+                      {["sdf", "sdf2"].map((item) => {
+                        return (
+                          <MenuItemOption key={item} value={item}>
+                            {item}
+                          </MenuItemOption>
+                        );
+                      })}
+                    </MenuOptionGroup>
+                    <MenuDivider />
+                    <MenuItem key={"AddParticpant"} value={"newParticipant"}>
+                      {/* {<Button onClick={add}>
+                              </Button>} */}
+                      {
+                        <InputGroup variant="custom" colorScheme="purple">
+                          <InputLeftAddon>Add:</InputLeftAddon>
+                          <Input placeholder={"newParticipant"} />
+                          <InputRightElement >
+                            <Button
+                              onClick={(e) => {
+                                setInvitedPeopleList([
+                                  ...invitedPeopleList,
+                                ]);
+                              }}
+                              >
+                              <Plus />
+                            </Button>
+                          </InputRightElement>
+                        </InputGroup>
+                      }
+                    </MenuItem>
+                  </MenuList>
+                </Menu>
+                {/* </Select> */}
+                {/* <Input
                   id="invitedPeople"
                   {...register("invitedPeople", { required: true })}
-                />
+                /> */}
                 <List>
                   {invitedPeopleList.map((person, index) => {
                     return (
