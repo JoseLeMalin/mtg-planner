@@ -4,7 +4,7 @@ import type {
   Prisma,
   PrismaClient,
   Session,
-  User
+  User,
 } from "@prisma/client";
 import { DeckCreateInfered, DeckUpdateInfered } from "./decks.types";
 

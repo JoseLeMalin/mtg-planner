@@ -15,13 +15,13 @@ import {
   Spinner,
   Stack,
   Text,
-  useBreakpointValue
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import {
   ArrowBigLeftIcon,
   ArrowBigRightIcon,
   PencilRuler,
-  Trash2
+  Trash2,
 } from "lucide-react";
 import Image from "next/image";
 import { PropsWithChildren, Suspense, useState } from "react";

@@ -81,8 +81,7 @@ export default function SliderTest() {
               content="center"
               // className="mx-4 bg-purple w-full h-10 inline-block"
             >
-                <h3>{deckItem.name}</h3>
-          
+              <h3>{deckItem.name}</h3>
             </Box>
           );
         })}

@@ -17,7 +17,7 @@ import {
   TabList,
   TabPanel,
   TabPanels,
-  Tabs
+  Tabs,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";

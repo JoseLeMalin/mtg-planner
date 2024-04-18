@@ -1,5 +1,4 @@
-import { Deck, Prisma } from "@prisma/client";
-import { prisma } from "src/lib/prisma";
+import { Deck } from "@prisma/client";
 import { z } from "zod";
 
 export const schemaDeck = z.object({

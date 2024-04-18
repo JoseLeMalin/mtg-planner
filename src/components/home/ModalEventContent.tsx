@@ -1,14 +1,14 @@
 // "use client";
 import {
-    Button,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
-    ModalOverlay,
-    UseDisclosureProps,
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  UseDisclosureProps,
 } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
 

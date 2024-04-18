@@ -1,7 +1,7 @@
 import { Button, Container, Link } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
-export default function EventHomePage() {
+export default function EventPage() {
   const event = {
     id: 1,
     title: "Long Event",
@@ -13,7 +13,7 @@ export default function EventHomePage() {
     <Container>
       <h1>This is the event {event.title}</h1>
       <Button>
-        <Link href="/events/1">Visit event 1</Link>
+        <Link href="/events/1/edit">Edit event {event.title}</Link>
       </Button>
     </Container>
   );

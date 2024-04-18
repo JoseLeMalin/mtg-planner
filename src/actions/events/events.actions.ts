@@ -1,21 +1,21 @@
 "use server";
 
 import { authAction } from "@/src/lib/actions";
-import { schemaDeckCreate, schemaDeckUpdate } from "@/src/types/decks.types";
+import { schemaEventCreate, schemaEventUpdate } from "@/src/types/event.types";
 import { prisma } from "src/lib/prisma";
 import { v4 } from "uuid";
 import { z } from "zod";
 
-const DeckActionEditProps = z.object({
-  data: schemaDeckUpdate,
+const EventActionEditProps = z.object({
+  data: schemaEventUpdate,
 });
 
-const DeckActionCreateProps = z.object({
-  data: schemaDeckCreate,
+const EventActionCreateProps = z.object({
+  data: schemaEventCreate,
 });
 
-export const createDeckNextAction = authAction(
-  DeckActionCreateProps,
+export const createEventNextAction = authAction(
+  EventActionCreateProps,
   async (props, { userId }) => {
     return await prisma.deck.create({
       data: { ...props.data, id: v4() },
@@ -23,8 +23,8 @@ export const createDeckNextAction = authAction(
   },
 );
 
-export const updateDeckNextAction = authAction(
-  DeckActionEditProps,
+export const updateEventNextAction = authAction(
+  EventActionEditProps,
   async (props, user) => {
     return await prisma.deck.update({
       where: {

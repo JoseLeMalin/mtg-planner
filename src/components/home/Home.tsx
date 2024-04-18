@@ -76,7 +76,18 @@ export default async function HomeComponent() {
             <CardBody>
               {/* <Box> */}
               {/* <DecksList decks={decks} /> */}
-              <Link href="/decks"> Create new deck</Link>
+              <Button
+                _hover={{
+                  shadow: "lg",
+                  bg: "blue.300",
+                }}
+                _active={{
+                  bgGradient: "linear(to-l, #7928CA, #FF0080)",
+                }}
+                // _focus={"outline-none"}
+              >
+                <Link href="/events">Events</Link>
+              </Button>
               {/* </Box> */}
             </CardBody>
           </Card>
@@ -87,7 +98,7 @@ export default async function HomeComponent() {
             <CardHeader>Your events:</CardHeader>
             <CardBody>
               <Button
-                _hover={ {
+                _hover={{
                   shadow: "lg",
                   bg: "blue.300",
                 }}
