@@ -1,10 +1,12 @@
 /* eslint-disable tailwindcss/classnames-order */
 import {
   Box,
+  Button,
   Card,
   CardBody,
   CardHeader,
   Container,
+  Flex,
   Link,
   Spinner,
 } from "@chakra-ui/react";
@@ -24,62 +26,91 @@ export type Deck = {
 
 type EventCalendar = { id: number; title: string; start: Date; end: Date };
 export default async function HomeComponent() {
-const events: EventCalendar[] = [
-  {
-    id: 1,
-    title: "Long Event",
-    start: dayjs("2024-04-15T13:45:00-05:00").toDate(),
-    end: dayjs("2024-04-15T14:45:00-05:00").toDate(),
-  },
-  {
-    id: 2,
-    title: "Long Event",
-    start: dayjs("2024-04-14T13:45:00-05:00").toDate(),
-    end: dayjs("2024-04-14T14:45:00-05:00").toDate(),
-  },
-  {
-    id: 3,
-    title: "Long Event",
-    start: dayjs("2024-04-16T13:45:00-05:00").toDate(),
-    end: dayjs("2024-04-17T14:45:00-05:00").toDate(),
-  },
-];
+  const events: EventCalendar[] = [
+    {
+      id: 1,
+      title: "Long Event",
+      start: dayjs("2024-04-15T13:45:00-05:00").toDate(),
+      end: dayjs("2024-04-15T14:45:00-05:00").toDate(),
+    },
+    {
+      id: 2,
+      title: "Long Event",
+      start: dayjs("2024-04-14T13:45:00-05:00").toDate(),
+      end: dayjs("2024-04-14T14:45:00-05:00").toDate(),
+    },
+    {
+      id: 3,
+      title: "Long Event",
+      start: dayjs("2024-04-16T13:45:00-05:00").toDate(),
+      end: dayjs("2024-04-17T14:45:00-05:00").toDate(),
+    },
+  ];
   return (
     <Container
-      minH={"75dvh"}
-      display={"flex"}
+      // minH={"75dvh"}
+      // display={"flex"}
+      // flexDir={"column"}
       w={"full"}
       minW={"full"}
-      flexDir={"column"}
+      h={"full"}
+      minH={"full"}
       bg={"pink"}
     >
-      <Box className=" my-4 flex w-full basis-12 flex-row bg-pink">
+      <Flex
+        flexDir={{
+          base: "column",
+          md: "row",
+        }}
+        wrap={"wrap"}
+        gap={10}
+        w={"full"}
+        bg={"gray.300"}
+        my={4}
+        ps={"10"}
+        pe={"10"}
+      >
         <Suspense fallback={<Spinner />}>
-          <Card className="inherit w-full flex bg-pink my-4 flex-row">
+          <Card w={"30%"} flexShrink={1}>
             <CardHeader>Your Activity:</CardHeader>
             <CardBody>
-              <Box>
-                {/* <DecksList decks={decks} /> */}
-                <Link href="/decks"> Create new deck</Link>
-              </Box>
+              {/* <Box> */}
+              {/* <DecksList decks={decks} /> */}
+              <Link href="/decks"> Create new deck</Link>
+              {/* </Box> */}
             </CardBody>
           </Card>
         </Suspense>
-      </Box>
-
-      {/* <Box className="my-4 flex w-full basis-12 flex-row bg-blue">
+        {/* </Box> */}
         <Suspense fallback={<Spinner />}>
-          <Card className="inherit bg-black my-4 flex w-full flex-row">
+          <Card w={"30%"} flexShrink={0}>
             <CardHeader>Your events:</CardHeader>
             <CardBody>
-              <Box>
-                <UserCalendar />
-              </Box>
+              <Button
+                _hover={ {
+                  shadow: "lg",
+                  bg: "blue.300",
+                }}
+                _active={{
+                  bgGradient: "linear(to-l, #7928CA, #FF0080)",
+                }}
+                // _focus={"outline-none"}
+              >
+                <Link href="/events">Events</Link>
+              </Button>
             </CardBody>
           </Card>
         </Suspense>
-      </Box> */}
-      <Box className="my-4 flex w-full basis-12 flex-row bg-gray-light">
+        {/* </Box> */}
+      </Flex>
+      <Box
+        my={4}
+        display={"flex"}
+        w={"full"}
+        flexBasis={12}
+        flexDir={"row"}
+        bg={"gray-light"}
+      >
         <Suspense fallback={<Spinner />}>
           <Card className="inherit bg-black my-4 flex w-full flex-row">
             <CardHeader>Your events:</CardHeader>
@@ -91,6 +122,34 @@ const events: EventCalendar[] = [
           </Card>
         </Suspense>
       </Box>
+      {/* <Box
+        display={"flex"}
+        flexBasis={12}
+        flexDir={"row"}
+        my={4}
+        w={"full"}
+        bg={"red"}
+      > */}
+      {/* <Box className="my-4 flex w-full basis-12 flex-row bg-blue">
+        <Suspense fallback={<Spinner />}>
+        <Card className="inherit bg-black my-4 flex w-full flex-row">
+        <CardHeader>Your events:</CardHeader>
+        <CardBody>
+        <Box>
+        <UserCalendar />
+        </Box>
+        </CardBody>
+        </Card>
+        </Suspense>
+      </Box> */}
+      {/* <Box
+        my={4}
+        display={"flex"}
+        w={"full"}
+        flexBasis={12}
+        flexDir={"row"}
+        bg={"gray-dark"}
+      > */}
     </Container>
   );
 }

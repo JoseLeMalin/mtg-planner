@@ -1,6 +1,6 @@
 import { Footer } from "@/src/layout/Footer";
 import { Header } from "@/src/layout/Header";
-import { Container } from "@chakra-ui/react";
+import { Container, Flex } from "@chakra-ui/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
@@ -38,25 +38,44 @@ export default function RootLayout({
         <Container className={"main-container"}>
           <Providers>
             <Header />
-            <Container
+            <Suspense fallback={<RootLoading />}>
+              <Flex
+                // flex
+                flexDir={"column"}
+                align={{ base: "center", md: "center" }}
+                justifyContent={{ base: "center", md: "space-between" }}
+                alignContent={{ base: "center", md: "center" }}
+                wrap={"wrap"}
+                // Display
+                m={"auto"}
+                h={"full"}
+                w={"full"}
+                maxW={"7xl"}
+                bg={"gray"}
+                p={2}
+                my={0}
+              >
+                {children}
+              </Flex>
+            </Suspense>
+            <Footer />
+          </Providers>
+        </Container>
+        {/* <Container
               display="flex"
+              flexDirection={"column"}
+              justifyContent={{ base: "center", md: "space-between" }}
+              alignContent={{ base: "center", md: "center" }}
               h={"100%"}
               maxW={"7xl"}
               p={8}
               bg={"grey"}
-              flexDirection={"column"}
-              justifyContent={{ base: "center", md: "space-between" }}
-              alignContent={{ base: "center", md: "center" }}
               // centerContent
               // direction={{ base: "column", md: "row" }}
               // justify={{ base: "center", md: "space-between" }}
               // align={{ base: "center", md: "center" }}
-            >
-              <Suspense fallback={<RootLoading />}>{children}</Suspense>
-            </Container>
-            <Footer />
-          </Providers>
-        </Container>
+            > */}
+        {/* </Container> */}
       </body>
     </html>
   );
