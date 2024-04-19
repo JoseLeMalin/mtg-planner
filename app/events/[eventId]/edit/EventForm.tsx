@@ -199,8 +199,10 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
                     onChange: (e) => {
                       e.preventDefault();
                       console.log("ici ?", dayjs(e.target.value).toDate());
+                      console.log("eventDate before ?", eventDate);
 
                       setEventDate(dayjs(e.target.value).toDate());
+                      console.log("EventDate after ?", eventDate);
                     },
                   })}
                 />
