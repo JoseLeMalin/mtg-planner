@@ -4,6 +4,7 @@ import {
   createEventNextAction,
   updateEventNextAction,
 } from "@/src/actions/events/events.actions";
+import UserCalendar from "@/src/components/home/CardCalendar";
 import {
   formatDDMMYYYY,
   getUTCDatePostGres,
@@ -21,17 +22,20 @@ import {
   Flex,
   FormControl,
   FormErrorMessage,
+  FormHelperText,
   FormLabel,
   Heading,
   Input,
   Stack,
   Tag,
+  TagCloseButton,
   Text,
   Tooltip,
   useCheckboxGroup,
   useToast,
 } from "@chakra-ui/react";
-import { FilePenLine, FilePlus2 } from "lucide-react";
+import dayjs from "dayjs";
+import { FilePenLine, FilePlus2, SquareX } from "lucide-react";
 import { Fragment, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -62,6 +66,8 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
   const [invitedPeopleList, setInvitedPeopleList] = useState<string[]>(
     invitedPeople || [],
   );
+  const [eventDate, setEventDate] = useState<Date>(dayjs().toDate());
+
   const listOfPeople = [
     "People 1",
     "People 2",
@@ -77,7 +83,9 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
   const { value, getCheckboxProps } = useCheckboxGroup({
     defaultValue: ["2"],
   });
+
   const toast = useToast();
+
   const {
     register,
     handleSubmit,
@@ -120,7 +128,13 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
 
   return (
     <Fragment>
-      <Card className="event-form-card" mx={2} w={"50%"}>
+      <Card
+        className="event-edit-form-card"
+        display={"flex"}
+        flexShrink={0}
+        w={"full"}
+        h={"full"}
+      >
         <CardHeader
           className="event-form-card-header"
           display={"flex"}
@@ -133,6 +147,7 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
           className="event-form-card-body"
           display={"flex"}
           flexDirection={"column"}
+          flexShrink={0}
           gap={6}
           px={2}
         >
@@ -170,99 +185,140 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
                 flexDirection={"column"}
                 isInvalid={!!errors.name}
               >
-                <Heading as="h1" size="sm">
-                  Event Title
-                </Heading>
-                <FormLabel flexShrink={1} htmlFor="name">
-                  <Input
-                    /* defaultValue={name} */
-                    id="name"
-                    {...register("name", { required: true, maxLength: 100 })}
-                    placeholder="Event name"
-                    size="md"
-                  />
+                <FormLabel flexShrink={1}>
+                  <Heading as="h1" size="sm">
+                    Event Date
+                  </Heading>
                 </FormLabel>
 
-                <Heading as="h3" size="sm">
-                  Choose the persons to invite
-                </Heading>
+                <Input
+                  type="date"
+                  {...(register("start"),
+                  {
+                    value: dayjs(eventDate).format("YYYY-MM-DD").toString(),
+                    onChange: (e) => {
+                      e.preventDefault();
+                      console.log("ici ?", dayjs(e.target.value).toDate());
 
-                {/* Begin invitedPeopleList */}
-                <Flex direction={"column"} wrap={"wrap"} gap={6}>
+                      setEventDate(dayjs(e.target.value).toDate());
+                    },
+                  })}
+                />
+                <UserCalendar
+                  date={eventDate}
+                  // events={[
+                  //   {
+                  //     id: 0,
+                  //     title: "Event de la journée",
+                  //     start: dayjs().toDate(),
+                  //     end: dayjs().toDate(),
+                  //   },
+                  // ]}
+                />
+                <FormHelperText>
+                  {"We'll never share your email."}
+                </FormHelperText>
+              </FormControl>
+              {/* Begin invitedPeopleList */}
+              <Flex marginTop={4} direction={"column"} wrap={"wrap"} gap={6}>
+                <Flex direction={["column", "row"]} wrap={"wrap"} gap={2}>
                   <Heading as="h3" size="sm">
                     Invited People
                   </Heading>
-                  <Box className="invited-people-tags">
-                    {invitedPeopleList.map((person, index) => {
-                      return <Tag key={index}>{person}</Tag>;
-                    })}
-                  </Box>
-
-                  <Box
-                    className="invited-people-accordion"
-                    display={"flex"}
-                    flexDirection={"row"}
-                    flexWrap={"wrap"}
+                  <Flex
+                    className="invited-people-tags"
+                    direction={["column", "row"]}
+                    wrap={"wrap"}
+                    gap={2}
                   >
-                    <CheckboxGroup
-                      colorScheme="green"
-                      onChange={(e) => {
-                        console.log(value);
-
-                        setInvitedPeopleList(() => e.sort() as string[]);
-                      }}
-                    >
-                      <Stack
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="space-between"
-                        spacing={[1, 5]}
-                        wrap={"wrap"}
-                        direction={["column", "row"]}
-                      >
-                        {listOfPeople.map((person, index) => {
-                          return (
-                            <Checkbox key={`${person}-${index}`} value={person}>
-                              {person}
-                            </Checkbox>
-                          );
-                        })}
-                      </Stack>
-                    </CheckboxGroup>
-                  </Box>
+                    {invitedPeopleList.map((person, index) => {
+                      return (
+                        <Tag key={index}>
+                          {person}
+                          <TagCloseButton
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setInvitedPeopleList((prev) =>
+                                prev.filter((p) => p !== person),
+                              );
+                            }}
+                          />
+                        </Tag>
+                      );
+                    })}
+                  </Flex>
+                  {invitedPeopleList.length > 0 ? (
+                    <SquareX onClick={() => setInvitedPeopleList([])} />
+                  ) : (
+                    ""
+                  )}
                 </Flex>
 
-                {/* End invitedPeopleList */}
-                <Flex
-                  className="event-form-image"
-                  direction={"row"}
-                  gap={6}
-                  my={3}
+                <Box
+                  className="invited-people-accordion"
+                  display={"flex"}
+                  flexDirection={"row"}
+                  flexWrap={"wrap"}
                 >
-                  <Heading flexBasis={6 / 12} as="h3" size="sm">
-                    Image link
-                  </Heading>
-                  <Input
-                    flexBasis={6 / 12}
-                    /* defaultValue={image} */
-                    {...register("image", { required: true })}
-                    id="image"
-                    placeholder="Image link"
-                    size="md"
-                  />
-                </Flex>
-                <Container className={"my-3"}>
-                  <Button type="submit">Submit</Button>
-                </Container>
-                <FormErrorMessage>
-                  {errors.name && errors.name.message}
-                </FormErrorMessage>
-              </FormControl>
+                  <CheckboxGroup
+                    colorScheme="green"
+                    onChange={(e) => {
+                      console.log(value);
+                      setInvitedPeopleList(() => e.sort() as string[]);
+                    }}
+                  >
+                    <Stack
+                      display="flex"
+                      alignContent={"center"}
+                      justifyContent={"center"}
+                      spacing={[1, 5]}
+                      wrap={"wrap"}
+                      direction={["column", "row"]}
+                    >
+                      {listOfPeople.map((person, index) => {
+                        if (invitedPeopleList.includes(person)) {
+                          return;
+                        }
+                        return (
+                          <Checkbox
+                            flexBasis={"30%"}
+                            key={`${person}-${index}`}
+                            value={person}
+                          >
+                            {person}
+                          </Checkbox>
+                        );
+                      })}
+                    </Stack>
+                  </CheckboxGroup>
+                </Box>
+              </Flex>
+
+              {/* End invitedPeopleList */}
+              <Flex
+                className="event-form-image"
+                direction={"row"}
+                gap={6}
+                my={3}
+              >
+                <Heading as="h3" size="sm">
+                  Image link
+                </Heading>
+                <Input
+                  /* defaultValue={image} */
+                  {...register("image", { required: false })}
+                  id="image"
+                  placeholder="Image link"
+                  size="md"
+                />
+              </Flex>
+              <Container display={"flex"} justifyContent={"center"}>
+                <Button type="submit">Submit</Button>
+              </Container>
+              <FormErrorMessage>
+                {errors.name && errors.name.message}
+              </FormErrorMessage>
             </form>
-          </Flex>
-          <Flex borderWidth={"3px"} borderColor={"black"}>
-            {" "}
-            Another Box
           </Flex>
         </CardBody>
       </Card>

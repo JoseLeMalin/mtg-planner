@@ -13,8 +13,12 @@ type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-export default function UserCalendar({ children }: PropsWithChildren) {
-  const [value, setValue] = useState(getUTCDatePostGres());
+type TUserCalendar = {
+  date?: Date;
+} & PropsWithChildren;
+
+export default function UserCalendar({ date, children }: TUserCalendar) {
+  const [value, setValue] = useState(date || getUTCDatePostGres());
 
   const handleOnChange = (nextValue: Value) => {
     console.log("Value?: ", nextValue);
