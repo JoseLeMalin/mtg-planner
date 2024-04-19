@@ -1,5 +1,5 @@
 import { getRequiredAuthSession } from "@/src/lib/auth";
-import { Container } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 
 import { getEventInfos } from "./event.actions";
 import EventEditForm from "./EventForm";
@@ -22,8 +22,25 @@ export default async function EventEditPage({
   const event = await getEventInfos(params.eventId);
 
   return (
-    <Container mx={"auto"} minW={"fit-content"} w={"50%"}>
+    /* <Container
+      className="event-edit-page"
+      display={"flex"}
+      alignContent={"center"}
+      justifyContent={"center"}
+      mx={0}
+      px={0}
+      w={"50%"}
+      minW={"fit-content"}
+    > */
+
+    <Center
+      className="event-edit-page"
+      mx={0}
+      px={0}
+      w={"50%"}
+      minW={"fit-content"}
+    >
       <EventEditForm defaultValue={{ event }} />
-    </Container>
+    </Center>
   );
 }

@@ -15,30 +15,23 @@ import {
   Card,
   CardBody,
   CardHeader,
+  Checkbox,
+  CheckboxGroup,
+  Container,
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Heading,
   Input,
-  InputGroup,
-  InputLeftAddon,
-  InputRightElement,
-  List,
-  ListIcon,
-  ListItem,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuItemOption,
-  MenuList,
-  MenuOptionGroup,
+  Stack,
+  Tag,
   Text,
   Tooltip,
+  useCheckboxGroup,
   useToast,
 } from "@chakra-ui/react";
-import { FilePenLine, FilePlus2, Plus } from "lucide-react";
+import { FilePenLine, FilePlus2 } from "lucide-react";
 import { Fragment, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -65,9 +58,25 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
   } = {
     ...defaultValue?.event,
   };
+
   const [invitedPeopleList, setInvitedPeopleList] = useState<string[]>(
     invitedPeople || [],
   );
+  const listOfPeople = [
+    "People 1",
+    "People 2",
+    "People 3",
+    "People 4",
+    "People 5",
+    "People 6",
+    "People 7",
+    "People 8",
+    "People 9",
+    "People 10",
+  ];
+  const { value, getCheckboxProps } = useCheckboxGroup({
+    defaultValue: ["2"],
+  });
   const toast = useToast();
   const {
     register,
@@ -111,7 +120,7 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
 
   return (
     <Fragment>
-      <Card className="event-form-card" mx={2}>
+      <Card className="event-form-card" mx={2} w={"50%"}>
         <CardHeader
           className="event-form-card-header"
           display={"flex"}
@@ -154,7 +163,7 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
               ""
             )}
           </Flex>
-          <Flex className="event-form" direction={"column"} gap={4} w={"full"}>
+          <Flex className="event-form" direction={"column"} gap={6} w={"full"}>
             <form onSubmit={handleSubmit(handleEditEvent)}>
               <FormControl
                 className="event-form-control"
@@ -177,98 +186,84 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
                 <Heading as="h3" size="sm">
                   Choose the persons to invite
                 </Heading>
-                {/* <Select
-                  {...register("invitedPeople", { required: true })}
-                  placeholder="small size"
-                  size="sm"
-                  onChange={(e) =>
-                    setInvitedPeopleList(e.target.value.split(","))
-                  }
-                > */}
-                <Menu closeOnSelect={false}>
-                  <MenuButton as={Button} colorScheme="blue">
-                    MenuItem
-                  </MenuButton>
-                  <MenuList
-                    id="invitedPeople"
-                    minWidth="240px"
-                    {...register("invitedPeople", { required: true })}
+
+                {/* Begin invitedPeopleList */}
+                <Flex direction={"column"} wrap={"wrap"} gap={6}>
+                  <Heading as="h3" size="sm">
+                    Invited People
+                  </Heading>
+                  <Box className="invited-people-tags">
+                    {invitedPeopleList.map((person, index) => {
+                      return <Tag key={index}>{person}</Tag>;
+                    })}
+                  </Box>
+
+                  <Box
+                    className="invited-people-accordion"
+                    display={"flex"}
+                    flexDirection={"row"}
+                    flexWrap={"wrap"}
                   >
-                    <MenuOptionGroup
-                      title={"Participants"}
-                      type="checkbox"
-                      onChange={(e) => console.log("event SHE: ", e)}
+                    <CheckboxGroup
+                      colorScheme="green"
+                      onChange={(e) => {
+                        console.log(value);
+
+                        setInvitedPeopleList(() => e.sort() as string[]);
+                      }}
                     >
-                      {["sdf", "sdf2"].map((item) => {
-                        return (
-                          <MenuItemOption key={item} value={item}>
-                            {item}
-                          </MenuItemOption>
-                        );
-                      })}
-                    </MenuOptionGroup>
-                    <MenuDivider />
-                    <MenuItem key={"AddParticpant"} value={"newParticipant"}>
-                      {/* {<Button onClick={add}>
-                              </Button>} */}
-                      {
-                        <InputGroup variant="custom" colorScheme="purple">
-                          <InputLeftAddon>Add:</InputLeftAddon>
-                          <Input placeholder={"newParticipant"} />
-                          <InputRightElement >
-                            <Button
-                              onClick={(e) => {
-                                setInvitedPeopleList([
-                                  ...invitedPeopleList,
-                                ]);
-                              }}
-                              >
-                              <Plus />
-                            </Button>
-                          </InputRightElement>
-                        </InputGroup>
-                      }
-                    </MenuItem>
-                  </MenuList>
-                </Menu>
-                {/* </Select> */}
-                {/* <Input
-                  id="invitedPeople"
-                  {...register("invitedPeople", { required: true })}
-                /> */}
-                <List>
-                  {invitedPeopleList.map((person, index) => {
-                    return (
-                      <ListItem key={index}>
-                        {person}
-                        <ListIcon color="green.500" />
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                      </ListItem>
-                    );
-                  })}
-                </List>
-                <Heading as="h3" size="sm">
-                  Image link
-                </Heading>
-                <Input
-                  /* defaultValue={image} */
-                  {...register("image", { required: true })}
-                  id="image"
-                  placeholder="Image link"
-                  size="md"
-                />
-                <div className={"my-3"}>
+                      <Stack
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="space-between"
+                        spacing={[1, 5]}
+                        wrap={"wrap"}
+                        direction={["column", "row"]}
+                      >
+                        {listOfPeople.map((person, index) => {
+                          return (
+                            <Checkbox key={`${person}-${index}`} value={person}>
+                              {person}
+                            </Checkbox>
+                          );
+                        })}
+                      </Stack>
+                    </CheckboxGroup>
+                  </Box>
+                </Flex>
+
+                {/* End invitedPeopleList */}
+                <Flex
+                  className="event-form-image"
+                  direction={"row"}
+                  gap={6}
+                  my={3}
+                >
+                  <Heading flexBasis={6 / 12} as="h3" size="sm">
+                    Image link
+                  </Heading>
+                  <Input
+                    flexBasis={6 / 12}
+                    /* defaultValue={image} */
+                    {...register("image", { required: true })}
+                    id="image"
+                    placeholder="Image link"
+                    size="md"
+                  />
+                </Flex>
+                <Container className={"my-3"}>
                   <Button type="submit">Submit</Button>
-                </div>
+                </Container>
                 <FormErrorMessage>
                   {errors.name && errors.name.message}
                 </FormErrorMessage>
               </FormControl>
             </form>
           </Flex>
-          <Box display={"flex"} borderWidth={2}>
+          <Flex borderWidth={"3px"} borderColor={"black"}>
+            {" "}
             Another Box
-          </Box>
+          </Flex>
         </CardBody>
       </Card>
     </Fragment>
