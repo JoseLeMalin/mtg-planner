@@ -3,7 +3,7 @@
 import { getUTCDatePostGres } from "@/src/lib/utils/dayjs/functions.utils";
 import { Box } from "@chakra-ui/react";
 import dayjs from "dayjs";
-import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
+import { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import Calendar from "react-calendar";
 
 // CSS
@@ -23,22 +23,15 @@ export default function UserCalendar({
   updateDate,
   children,
 }: TUserCalendar) {
-  const [value, setValue] = useState(dayjs(date).toDate());
-  console.log("value date change ? ", date);
-
   const handleOnChange = (nextValue: Value) => {
     console.log("Value?: ", nextValue);
-    updateDate((prev)=>dayjs(nextValue?.toString()).toDate());
-    // if (!nextValue) {
-    //   return;
-    // }
-    // const test = nextValue.toString();
-    // setValue(dayjs(test).toDate());
+    updateDate((prev) => dayjs(nextValue?.toString()).toDate());
   };
   return (
-    <Box className="flex w-full">
+    <Box w={"full"} h={"full"} display={"flex"}>
       <Calendar
-        defaultActiveStartDate={dayjs(value?.toString()).toDate()}
+        view="month"
+        defaultActiveStartDate={dayjs(date?.toString()).toDate()}
         locale="en-GB" //https://stackoverflow.com/questions/75112338/react-calendar-prop-aria-label-did-not-match-server-december-26-2022-clie
         minDate={getUTCDatePostGres("2024-01-01")}
         maxDate={getUTCDatePostGres(dayjs().add(3, "y").toDate())}

@@ -3,12 +3,16 @@ import { Header } from "@/src/layout/Header";
 import { Container, Flex } from "@chakra-ui/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Suspense } from "react";
+import { PropsWithChildren, ReactNode, Suspense } from "react";
 import RootLoading from "./loading";
 import { Providers } from "./Providers";
 
 // Global CSS
 import "./globals.css";
+
+type TRootLayout = {
+  modal?: ReactNode;
+} & PropsWithChildren;
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,11 +21,7 @@ export const metadata: Metadata = {
   description: "Party Planner",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ modal, children }: TRootLayout) {
   return (
     <html lang="en">
       <head>
@@ -38,6 +38,7 @@ export default function RootLayout({
         <Container className={"main-container"}>
           <Providers>
             <Header />
+            <div>{modal}</div>
             <Suspense fallback={<RootLoading />}>
               <Flex
                 // flex

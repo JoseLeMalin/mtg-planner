@@ -178,7 +178,12 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
               ""
             )}
           </Flex>
-          <Flex className="event-form" direction={"column"} gap={6} w={"full"}>
+          <Flex
+            className="event-form"
+            direction={["column"]}
+            gap={6}
+            w={"full"}
+          >
             <form onSubmit={handleSubmit(handleEditEvent)}>
               <FormControl
                 className="event-form-control"
@@ -190,40 +195,49 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
                     Event Date
                   </Heading>
                 </FormLabel>
-
-                <Input
-                  type="date"
-                  {...(register("start"),
-                  {
-                    value: dayjs(eventDate).format("YYYY-MM-DD").toString(),
-                    onChange: (e) => {
-                      e.preventDefault();
-                      console.log("ici ?", dayjs(e.target.value).toDate());
-                      console.log("eventDate before ?", eventDate);
-
-                      setEventDate(dayjs(e.target.value).toDate());
-                      console.log("EventDate after ?", eventDate);
-                    },
-                  })}
-                />
-                <UserCalendar
-                  date={eventDate}
-                  updateDate={setEventDate}
-                  // events={[
-                  //   {
-                  //     id: 0,
-                  //     title: "Event de la journée",
-                  //     start: dayjs().toDate(),
-                  //     end: dayjs().toDate(),
-                  //   },
-                  // ]}
-                />
-                <FormHelperText>
-                  {"We'll never share your email."}
-                </FormHelperText>
+                <Flex
+                  className="event-form-input-date"
+                  direction={["row", "column"]}
+                  justifyItems={"center"}
+                  alignItems={"center"}
+                >
+                  <Box className="event-form-datepicker" flexBasis={"1 / 2"}>
+                    <Input
+                      className="datepicker"
+                      borderWidth={2}
+                      borderColor={"gray.400"}
+                      type="date"
+                      {...(register("start"),
+                      {
+                        value: dayjs(eventDate).format("YYYY-MM-DD").toString(),
+                        onChange: (e) => {
+                          e.preventDefault();
+                          setEventDate(dayjs(e.target.value).toDate());
+                        },
+                      })}
+                    />
+                  </Box>
+                  <Box className="event-form-calendar">
+                    <UserCalendar
+                      date={eventDate}
+                      updateDate={setEventDate}
+                      // events={[
+                      //   {
+                      //     id: 0,
+                      //     title: "Event de la journée",
+                      //     start: dayjs().toDate(),
+                      //     end: dayjs().toDate(),
+                      //   },
+                      // ]}
+                    />
+                    <FormHelperText>
+                      {"We'll never share your email."}
+                    </FormHelperText>
+                  </Box>
+                </Flex>
               </FormControl>
               {/* Begin invitedPeopleList */}
-              <Flex marginTop={4} direction={"column"} wrap={"wrap"} gap={6}>
+              <Flex marginTop={12} direction={"column"} wrap={"wrap"} gap={6}>
                 <Flex direction={["column", "row"]} wrap={"wrap"} gap={2}>
                   <Heading as="h3" size="sm">
                     Invited People

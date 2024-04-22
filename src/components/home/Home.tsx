@@ -111,6 +111,23 @@ export default async function HomeComponent() {
               </Button>
             </CardBody>
           </Card>
+          <Card w={"30%"} flexShrink={0}>
+            <CardHeader>Your events:</CardHeader>
+            <CardBody>
+              <Button
+                _hover={{
+                  shadow: "lg",
+                  bg: "blue.300",
+                }}
+                _active={{
+                  bgGradient: "linear(to-l, #7928CA, #FF0080)",
+                }}
+                // _focus={"outline-none"}
+              >
+                <Link href="/events/1/edit">Events</Link>
+              </Button>
+            </CardBody>
+          </Card>
         </Suspense>
         {/* </Box> */}
       </Flex>
