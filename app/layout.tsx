@@ -38,7 +38,6 @@ export default function RootLayout({ modal, children }: TRootLayout) {
         <Container className={"main-container"}>
           <Providers>
             <Header />
-            <div>{modal}</div>
             <Suspense fallback={<RootLoading />}>
               <Flex
                 // flex
@@ -62,6 +61,7 @@ export default function RootLayout({ modal, children }: TRootLayout) {
             <Footer />
           </Providers>
         </Container>
+        <div>{modal}</div>
         {/* <Container
               display="flex"
               flexDirection={"column"}

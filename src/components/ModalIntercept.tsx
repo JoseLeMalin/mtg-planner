@@ -1,15 +1,15 @@
 "use client";
 
 import {
-    Button,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
-    ModalOverlay,
-    useDisclosure,
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
 
@@ -23,7 +23,7 @@ export default function ModalIntercept({ params, children }: ModalProps) {
     <>
       {/* <Button onClick={onOpen}>Open Modal</Button> */}
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={true} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>

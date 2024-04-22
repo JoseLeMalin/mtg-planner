@@ -112,7 +112,7 @@ export default async function HomeComponent() {
             </CardBody>
           </Card>
           <Card w={"30%"} flexShrink={0}>
-            <CardHeader>Your events:</CardHeader>
+            <CardHeader>Trigger modal event 1:</CardHeader>
             <CardBody>
               <Button
                 _hover={{
@@ -124,7 +124,7 @@ export default async function HomeComponent() {
                 }}
                 // _focus={"outline-none"}
               >
-                <Link href="/events/1/edit">Events</Link>
+                <Link href="/events/1/edit">Event 1 Modal</Link>
               </Button>
             </CardBody>
           </Card>

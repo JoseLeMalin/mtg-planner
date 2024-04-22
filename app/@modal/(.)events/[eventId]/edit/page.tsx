@@ -11,10 +11,10 @@ export default function EventEditModal({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   console.log("Comming here?");
-  
+
   return (
-    <ModalIntercept params="events">
-      <EventEditPage params={params} searchParams={searchParams} />;
+    <ModalIntercept params="dfsdfdsf">
+      <EventEditPage params={{ eventId: "1" }} searchParams={searchParams} />;
     </ModalIntercept>
   );
 }
