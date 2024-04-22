@@ -208,6 +208,7 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
                 />
                 <UserCalendar
                   date={eventDate}
+                  updateDate={setEventDate}
                   // events={[
                   //   {
                   //     id: 0,
