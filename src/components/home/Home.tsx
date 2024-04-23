@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { Suspense } from "react";
+import ModalIntercept from "../ModalIntercept";
 import CardBigCalendar from "./CardBigCalendar";
 
 export type Deck = {
@@ -74,39 +75,17 @@ export default async function HomeComponent() {
           <Card w={"30%"} flexShrink={1}>
             <CardHeader>Your Activity:</CardHeader>
             <CardBody>
-              {/* <Box> */}
-              {/* <DecksList decks={decks} /> */}
-              <Button
-                _hover={{
-                  shadow: "lg",
-                  bg: "blue.300",
-                }}
-                _active={{
-                  bgGradient: "linear(to-l, #7928CA, #FF0080)",
-                }}
-                // _focus={"outline-none"}
-              >
+              <Button>
                 <Link href="/events">Events</Link>
               </Button>
-              {/* </Box> */}
             </CardBody>
           </Card>
         </Suspense>
-        {/* </Box> */}
         <Suspense fallback={<Spinner />}>
           <Card w={"30%"} flexShrink={0}>
             <CardHeader>Your events:</CardHeader>
             <CardBody>
-              <Button
-                _hover={{
-                  shadow: "lg",
-                  bg: "blue.300",
-                }}
-                _active={{
-                  bgGradient: "linear(to-l, #7928CA, #FF0080)",
-                }}
-                // _focus={"outline-none"}
-              >
+              <Button>
                 <Link href="/events">Events</Link>
               </Button>
             </CardBody>
@@ -114,16 +93,7 @@ export default async function HomeComponent() {
           <Card w={"30%"} flexShrink={0}>
             <CardHeader>Trigger modal event 1:</CardHeader>
             <CardBody>
-              <Button
-                _hover={{
-                  shadow: "lg",
-                  bg: "blue.300",
-                }}
-                _active={{
-                  bgGradient: "linear(to-l, #7928CA, #FF0080)",
-                }}
-                // _focus={"outline-none"}
-              >
+              <Button>
                 <Link href="/events/1/edit">Event 1 Modal</Link>
               </Button>
             </CardBody>
@@ -131,6 +101,9 @@ export default async function HomeComponent() {
         </Suspense>
         {/* </Box> */}
       </Flex>
+      <Box className="box-home-modal-btn">
+        <ModalIntercept params="dfsdfdsf" />
+      </Box>
       <Box
         my={4}
         display={"flex"}
@@ -141,7 +114,7 @@ export default async function HomeComponent() {
       >
         <Suspense fallback={<Spinner />}>
           <Card className="inherit bg-black my-4 flex w-full flex-row">
-            <CardHeader>Your events:</CardHeader>
+            <CardHeader>Your Calendar:</CardHeader>
             <CardBody>
               <Box>
                 <CardBigCalendar events={events} />
@@ -150,6 +123,7 @@ export default async function HomeComponent() {
           </Card>
         </Suspense>
       </Box>
+
       {/* <Box
         display={"flex"}
         flexBasis={12}

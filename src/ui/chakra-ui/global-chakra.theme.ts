@@ -3,7 +3,7 @@ import { defineStyle, defineStyleConfig, extendTheme } from "@chakra-ui/react";
 
 // define the base styles of the component
 const baseStyle = {
-  // borderRadius: "xl", // add a border radius
+  borderRadius: "sm", // add a border radius
   fontWeight: "medium", // change the font weight
 };
 
@@ -56,36 +56,6 @@ const boldVariant = defineStyle((props) => {
   };
 });
 
-const testShe = defineStyle((props) => {
-  return {
-    borderRadius: "none",
-    border: "2px solid",
-    fontFamily: "mono",
-    _light: {
-      bg: "white",
-      color: "green",
-      _hover: {
-        shadow: "lg",
-        bg: "orange.300",
-      },
-      _active: {
-        bgGradient: "linear(to-l, #F56565, #48BB78)",
-      },
-    },
-    _dark: {
-      bg: "black",
-      color: "white",
-      _hover: {
-        shadow: "lg",
-        bg: "orange.300",
-      },
-      _active: {
-        bgGradient: "linear(to-l, #F56565, #48BB78)",
-      },
-    },
-  };
-});
-
 // define the custom variants
 const variants = {
   colorful: colorfulVariant,
@@ -104,26 +74,6 @@ export const containerTheme = defineStyleConfig({
     colorScheme: "brand",
   },
 });
-
-// export const buttonTheme = defineStyleConfig({
-//   baseStyle: {
-//     _hover: {
-//       shadow: "lg",
-//       bg: "blue.300",
-//     },
-//     _active: {
-//       bgGradient: "linear(to-l, #7928CA, #FF0080)",
-//     },
-//   },
-//   // sizes,
-//   variants,
-//   defaultProps: {
-//     // define which sizes, variants, and color schemes are applied by default
-//     size: "md",
-//     // variant: "colorful",
-//     // colorScheme: "brand",
-//   },
-// });
 
 const theme = extendTheme({
   colors: {

@@ -1,10 +1,10 @@
 "use client";
 
+import { Button } from "@chakra-ui/react";
 import { LogOut } from "lucide-react";
-import { useLogoutNextAuth } from "src/hooks/useLogoutNextAuth";
-import { Button, Divider } from "@chakra-ui/react";
-import { Fragment, PropsWithChildren } from "react";
 import { signOut } from "next-auth/react";
+import { PropsWithChildren } from "react";
+import { useLogoutNextAuth } from "src/hooks/useLogoutNextAuth";
 
 export function ButtonLogout({ children }: PropsWithChildren) {
   const { isPending, mutate } = useLogoutNextAuth();

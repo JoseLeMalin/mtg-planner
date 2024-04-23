@@ -18,12 +18,12 @@ type ModalProps = {
 } & PropsWithChildren;
 
 export default function ModalIntercept({ params, children }: ModalProps) {
-  const { isOpen, onOpen, onClose } = useDisclosure({ isOpen: true });
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      {/* <Button onClick={onOpen}>Open Modal</Button> */}
+      <Button onClick={onOpen}>Open Modal</Button>
 
-      <Modal isOpen={true} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>

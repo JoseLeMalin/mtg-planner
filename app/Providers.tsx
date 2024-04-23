@@ -1,7 +1,8 @@
 "use client";
 
+import theme from "@/src/ui/chakra-ui/global-chakra.theme";
 // import { ToastProvider } from "@/components/ui/toast";
-import { ChakraProvider, ColorModeProvider, theme } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 import { PropsWithChildren } from "react";
