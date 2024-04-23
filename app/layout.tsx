@@ -11,7 +11,7 @@ import { Providers } from "./Providers";
 import "./globals.css";
 
 type TRootLayout = {
-  modal?: ReactNode;
+  modal: ReactNode;
 } & PropsWithChildren;
 
 const inter = Inter({ subsets: ["latin"] });
@@ -60,8 +60,8 @@ export default function RootLayout({ modal, children }: TRootLayout) {
             </Suspense>
             <Footer />
           </Providers>
+          <div>{modal}</div>
         </Container>
-        <div>{modal}</div>
         {/* <Container
               display="flex"
               flexDirection={"column"}

@@ -11,6 +11,7 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
+import { usePathname, useRouter } from "next/navigation";
 import { PropsWithChildren } from "react";
 
 type ModalProps = {
@@ -18,10 +19,14 @@ type ModalProps = {
 } & PropsWithChildren;
 
 export default function ModalIntercept({ params, children }: ModalProps) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const isCoursePage = pathname?.split("/").filter(Boolean).length === 2;
+  const { isOpen, onOpen, onClose } = useDisclosure({isOpen: isCoursePage});
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
+      {/* <Button onClick={onOpen}>Open Modal</Button> */}
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
