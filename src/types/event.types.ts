@@ -45,3 +45,4 @@ export type DeckUpdateInfered = z.infer<typeof schemaEventUpdate>;
 // export type DeckListInfered = z.infer<typeof schemaDeckArray>;
 
 export type EventCreate = Omit<Event, "id">;
+export type PartyTest = { id: string };

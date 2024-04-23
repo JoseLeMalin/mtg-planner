@@ -90,14 +90,6 @@ export default async function HomeComponent() {
               </Button>
             </CardBody>
           </Card>
-          <Card w={"30%"} flexShrink={0}>
-            <CardHeader>Trigger modal event 1:</CardHeader>
-            <CardBody>
-              <Button>
-                <Link href="/events/1/edit">Event 1 Modal</Link>
-              </Button>
-            </CardBody>
-          </Card>
         </Suspense>
         {/* </Box> */}
       </Flex>

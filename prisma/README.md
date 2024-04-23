@@ -22,3 +22,11 @@ pnpx prisma migrate diff --from-empty --to-schema-datamodel prisma/schema.prisma
 //      Make sure prisma file is correct: npx prisma format
 //      Deploy migration: npx prisma migrate dev    => Give name to new migration file
 //      
+
+
+Tried installing @prisma/client manually, it seems to help. So here is a possible workaround until the problem is fixed.
+
+Delete node_modules
+Run npm install
+Run npm install @prisma/client
+Run npx prisma generate / npm prisma migrate dev
