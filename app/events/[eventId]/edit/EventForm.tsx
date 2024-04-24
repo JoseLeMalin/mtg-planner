@@ -1,38 +1,38 @@
 "use client";
 
 import {
-    createEventNextAction,
-    updateEventNextAction,
+  createEventNextAction,
+  updateEventNextAction,
 } from "@/src/actions/events/events.actions";
 import UserCalendar from "@/src/components/home/CardCalendar";
 import {
-    formatDDMMYYYY,
-    getUTCDatePostGres,
+  formatDDMMYYYY,
+  getUTCDatePostGres,
 } from "@/src/lib/utils/dayjs/functions.utils";
 import { PartyCreateInfered, PartyInfered } from "@/src/types/event.types";
 import {
-    Box,
-    Button,
-    Card,
-    CardBody,
-    CardHeader,
-    Checkbox,
-    CheckboxGroup,
-    Container,
-    Flex,
-    FormControl,
-    FormErrorMessage,
-    FormHelperText,
-    FormLabel,
-    Heading,
-    Input,
-    Stack,
-    Tag,
-    TagCloseButton,
-    Text,
-    Tooltip,
-    useCheckboxGroup,
-    useToast,
+  Box,
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Checkbox,
+  CheckboxGroup,
+  Container,
+  Flex,
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+  Heading,
+  Input,
+  Stack,
+  Tag,
+  TagCloseButton,
+  Text,
+  Tooltip,
+  useCheckboxGroup,
+  useToast,
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { FilePenLine, FilePlus2, SquareX } from "lucide-react";

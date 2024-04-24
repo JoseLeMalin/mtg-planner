@@ -39,23 +39,23 @@ const testShe = defineStyle((props) => {
         bg: "grey.700",
         borderColor: "#2F855A",
         bgGradient: "linear(to-l, #F56565, #DD6B20)",
-    },
-    _active: {
+      },
+      _active: {
         borderColor: "#D53F8C",
         bgGradient: "linear(to-l, #bee3f8, #9AE6B4)",
+      },
     },
-},
-_dark: {
-    bg: "black",
-    color: "white",
-    _hover: {
+    _dark: {
+      bg: "black",
+      color: "white",
+      _hover: {
         shadow: "lg",
         color: "white",
         borderColor: "#3182ce",
         bgGradient: "linear(to-l, #ED64A6, #553C9A)",
-    },
-    _active: {
-          borderColor: "#D53F8C",
+      },
+      _active: {
+        borderColor: "#D53F8C",
         bgGradient: "linear(to-l, #bee3f8, #9AE6B4)",
       },
     },

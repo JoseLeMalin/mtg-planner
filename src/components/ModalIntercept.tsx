@@ -23,7 +23,7 @@ export default function ModalIntercept({ params, children }: ModalProps) {
   const pathname = usePathname();
 
   const isCoursePage = pathname?.split("/").filter(Boolean).length === 2;
-  const { isOpen, onOpen, onClose } = useDisclosure({isOpen: isCoursePage});
+  const { isOpen, onOpen, onClose } = useDisclosure({ isOpen: isCoursePage });
   return (
     <>
       {/* <Button onClick={onOpen}>Open Modal</Button> */}

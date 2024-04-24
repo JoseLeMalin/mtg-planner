@@ -9,8 +9,8 @@
     "docker:build": "docker compose -f .docker/compose.yaml up",
     "docker:down": "docker compose -f .docker/compose.yaml down",
     "lint": "next lint",
-    "prettier-c": "npx prettier ./app/ ./pages/ ./src/ -c",
-    "prettier-w": "npx prettier ./app/ ./pages/ ./src/ -w",
+    "prettier-c": "pnpx prettier ./app/ ./pages/ ./src/ -c",
+    "prettier-w": "pnpx prettier ./app/ ./pages/ ./src/ -w",
     "start": "next start"
   },
   "dependencies": {
