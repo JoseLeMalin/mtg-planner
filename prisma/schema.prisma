@@ -70,8 +70,10 @@ model Deck {
 
 model Party {
   id            String           @id @default(cuid())
-  startDate     DateTime
-  endDate       DateTime
+  name          String
+  image         String
+  start         DateTime
+  end           DateTime
   type          String
   expiresAt     DateTime?
   createdAt     DateTime         @default(now())

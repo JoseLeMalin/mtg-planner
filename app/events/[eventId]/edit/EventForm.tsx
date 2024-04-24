@@ -1,38 +1,38 @@
 "use client";
 
 import {
-  createEventNextAction,
-  updateEventNextAction,
+    createEventNextAction,
+    updateEventNextAction,
 } from "@/src/actions/events/events.actions";
 import UserCalendar from "@/src/components/home/CardCalendar";
 import {
-  formatDDMMYYYY,
-  getUTCDatePostGres,
+    formatDDMMYYYY,
+    getUTCDatePostGres,
 } from "@/src/lib/utils/dayjs/functions.utils";
-import { EventCreateInfered, EventInfered } from "@/src/types/event.types";
+import { PartyCreateInfered, PartyInfered } from "@/src/types/event.types";
 import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Checkbox,
-  CheckboxGroup,
-  Container,
-  Flex,
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
-  Heading,
-  Input,
-  Stack,
-  Tag,
-  TagCloseButton,
-  Text,
-  Tooltip,
-  useCheckboxGroup,
-  useToast,
+    Box,
+    Button,
+    Card,
+    CardBody,
+    CardHeader,
+    Checkbox,
+    CheckboxGroup,
+    Container,
+    Flex,
+    FormControl,
+    FormErrorMessage,
+    FormHelperText,
+    FormLabel,
+    Heading,
+    Input,
+    Stack,
+    Tag,
+    TagCloseButton,
+    Text,
+    Tooltip,
+    useCheckboxGroup,
+    useToast,
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { FilePenLine, FilePlus2, SquareX } from "lucide-react";
@@ -41,7 +41,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 type EventFormEdit = {
   defaultValue?: {
-    event: EventInfered & {
+    event: PartyInfered & {
       id: string;
     };
   };
@@ -90,7 +90,7 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<EventInfered>({
+  } = useForm<PartyInfered>({
     defaultValues: {
       name,
       image,
@@ -102,8 +102,8 @@ export default function EventEditForm({ defaultValue }: EventFormEdit) {
 
   // jund https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/d/d3/Jund.jpg/revision/latest?cb=20171022202928
   // const handleCreateDeck : SubmitHandler<Inputs>= async (e: FormEvent<HTMLFormElement>) => {
-  const handleEditEvent: SubmitHandler<EventInfered> = async (data) => {
-    const eventData: EventCreateInfered = {
+  const handleEditEvent: SubmitHandler<PartyInfered> = async (data) => {
+    const eventData: PartyCreateInfered = {
       ...data,
       ownerId: "cluibebcn0000ufdxdpol42vk",
       createdBy: "cluibebcn0000ufdxdpol42vk",

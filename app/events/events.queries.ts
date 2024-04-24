@@ -5,6 +5,8 @@ export const getUserEvents = async (
 ): Promise<
   {
     id: string;
+    name: string;
+    image: string;
     startDate: Date;
     endDate: Date;
     type: string;

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const schemaEvent = z.object({
+export const schemaParty = z.object({
   id: z.string(),
   name: z.string(),
   image: z.string().optional(),
@@ -13,7 +13,7 @@ export const schemaEvent = z.object({
   ownerId: z.string(),
 });
 
-export const schemaEventCreate = z.object({
+export const schemaPartyCreate = z.object({
   name: z.string(),
   image: z.string().optional(),
   invitedPeople: z.array(z.string()).optional(),
@@ -25,7 +25,7 @@ export const schemaEventCreate = z.object({
   ownerId: z.string(),
 });
 
-export const schemaEventUpdate = z.object({
+export const schemaPartyUpdate = z.object({
   id: z.string(),
   name: z.string(),
   image: z.string().optional(),
@@ -38,11 +38,10 @@ export const schemaEventUpdate = z.object({
   ownerId: z.string().optional(),
 });
 
-export type EventInfered = z.infer<typeof schemaEvent>;
-export type EventCreateInfered = z.infer<typeof schemaEventCreate>;
-export type DeckUpdateInfered = z.infer<typeof schemaEventUpdate>;
+export type PartyInfered = z.infer<typeof schemaParty>;
+export type PartyCreateInfered = z.infer<typeof schemaPartyCreate>;
 
 // export type DeckListInfered = z.infer<typeof schemaDeckArray>;
 
-export type EventCreate = Omit<Event, "id">;
+export type PartyCreate = Omit<Event, "id">;
 export type PartyTest = { id: string };

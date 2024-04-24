@@ -1,4 +1,4 @@
-import { schemaEvent } from "@/src/types/event.types";
+import { schemaParty } from "@/src/types/event.types";
 import dayjs from "dayjs";
 
 export const getEventInfos = async (eventId: string) => {
@@ -28,7 +28,7 @@ export const getEventInfos = async (eventId: string) => {
     createdBy: "José LeMalin",
     ownerId: "123456",
   };
-  const parsedEvent = await schemaEvent.safeParseAsync(event);
+  const parsedEvent = await schemaParty.safeParseAsync(event);
   if (!parsedEvent.success) throw new Error("Event not found");
 
   return parsedEvent.data;
