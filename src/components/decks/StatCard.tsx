@@ -22,6 +22,7 @@ export function StatsCard(props: StatsCardProps) {
       borderColor={useColorModeValue("gray.800", "gray.500")}
       rounded={"lg"}
     >
+      <h1>Home</h1>
       <StatLabel fontWeight={"medium"} isTruncated>
         {title}
       </StatLabel>
