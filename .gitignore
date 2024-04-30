@@ -9,6 +9,8 @@
 
 # testing
 /coverage
+cypress.env.json
+src/auth.config.json
 
 # next.js
 /.next/

@@ -3,8 +3,8 @@
     "**/.pnp.*": true
   },
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.removeUnusedImports": "explicit"
-  }
+  // "editor.codeActionsOnSave": {
+  //   "source.organizeImports": "explicit",
+  //   "source.removeUnusedImports": "explicit"
+  // }
 }
