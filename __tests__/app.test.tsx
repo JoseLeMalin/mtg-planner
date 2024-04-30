@@ -10,6 +10,6 @@ describe("Homepage", () => {
 
     expect(
       screen.getByRole("heading", { level: 1, name: "Home" }),
-    ).toBeDefined();
+    ).toBeDefined();  
   });
 });

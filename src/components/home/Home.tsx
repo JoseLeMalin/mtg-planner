@@ -26,7 +26,7 @@ export type Deck = {
 };
 
 type EventCalendar = { id: number; title: string; start: Date; end: Date };
-export default async function HomeComponent() {
+export default function HomeComponent() {
   const events: EventCalendar[] = [
     {
       id: 1,
@@ -73,19 +73,21 @@ export default async function HomeComponent() {
       >
         <Suspense fallback={<Spinner />}>
           <Card w={"30%"} flexShrink={1}>
-            <CardHeader>Your Activity:</CardHeader>
-            <CardBody>
-              <Button>
-                <Link href="/events">Events</Link>
+            <CardHeader id="home-first-activity-card-header">
+              Your Activity:
+            </CardHeader>
+            <CardBody id="home-first-activity-card-body">
+              <Button id="home-events-btn" name="home-events-btn" type="button">
+                <Link href="/events">Activities</Link>
               </Button>
             </CardBody>
           </Card>
         </Suspense>
         <Suspense fallback={<Spinner />}>
           <Card w={"30%"} flexShrink={0}>
-            <CardHeader>Your events:</CardHeader>
-            <CardBody>
-              <Button>
+            <CardHeader id="home-second-activity-card-header" >Your events:</CardHeader>
+            <CardBody id="home-second-activity-card-body" >
+              <Button id="home-events-btn" name="home-events-btn" type="button">
                 <Link href="/events">Events</Link>
               </Button>
             </CardBody>

@@ -1,29 +1,15 @@
-
-
-
 describe("Navigation", () => {
-  it("should navigate to the about page", () => {
+  beforeEach(() => {
     // Start from the index page
     cy.visit("/");
-
-    // Find a link with an href attribute containing "about" and click it
-    cy.get('a[href*="about"]').click();
-
-    // The new url should include "/about"
-    cy.url().should("include", "/about");
-
-    // The new page should contain an h1 with "About"
-    cy.get("h1").contains("About");
+  });
+  it("should check if event button is shown and active", () => {
+    cy.get("button").should("be.visible").should("be.enabled");
   });
   it("should render and display expected content", () => {
     // Mount the React component for the Home page
     // cy.mount(<StatsCard />)
-
-    // The new page should contain an h1 with "Home"
-    cy.get("h1").contains("Home");
-
-    // Validate that a link with the expected URL is present
-    // Following the link is better suited to an E2E test
-    cy.get('a[href="/about"]').should("be.visible");
+    cy.get('button[type=button]').contains("Events").as('eventsBtn')
+    cy.get('@eventsBtn').click().should('be.enabled')
   });
 });
