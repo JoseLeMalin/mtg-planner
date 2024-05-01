@@ -4,9 +4,9 @@ import { GitHubSocialLogin } from "cypress-social-logins/src/Plugins";
 
 
 
-module.exports = (on, config) => {
-  on("task", {
-    // GoogleSocialLogin: plugins.GoogleSocialLogin(),
-    GitHubSocialLogin: plugins.GitHubSocialLogin,
-  });
-};
+// module.exports = (on, config) => {
+//   on("task", {
+//     // GoogleSocialLogin: plugins.GoogleSocialLogin(),
+//     GitHubSocialLogin: plugins.GitHubSocialLogin,
+//   });
+// };
