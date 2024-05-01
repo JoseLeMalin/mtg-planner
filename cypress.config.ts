@@ -7,6 +7,7 @@ export default defineConfig({
   chromeWebSecurity: false,
   e2e: {
     setupNodeEvents(on, config) {
+      // https://docs.cypress.io/guides/tooling/plugins-guide#Using-a-plugin
       on("task", {
         // GoogleSocialLogin: plugins.GoogleSocialLogin(),
         GitHubSocialLogin: plugins.GitHubSocialLogin,
