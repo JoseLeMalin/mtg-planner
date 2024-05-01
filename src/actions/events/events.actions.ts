@@ -18,9 +18,14 @@ export const createEventNextAction = authAction(
   PartyActionCreateProps,
   async (props, { userId }) => {
     return await prisma.party.create({
-      data: { name: props.data.name, id: v4() , end: props.data.end, start: props.data.start, ownerId: userId},
+      data: {
+        name: props.data.name,
+        id: v4(),
+        end: props.data.end,
+        start: props.data.start,
+        ownerId: userId,
+      },
       // data: { ...props.data, id: v4()},
-
     });
   },
 );

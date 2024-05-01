@@ -20,15 +20,13 @@ export default async function EventsHomePage() {
       flexDir={"column"}
     >
       <Flex direction={"row"}>
-
-      <h1>This is the event EventHomePage</h1>
-      <Spacer />
-      <Link href={"/events/create"}>
-        <Button>
-
-                      <IoAddSharp size={"40px"} />
-        </Button>
-                    </Link>
+        <h1>This is the event EventHomePage</h1>
+        <Spacer />
+        <Link href={"/events/create"}>
+          <Button>
+            <IoAddSharp size={"40px"} />
+          </Button>
+        </Link>
       </Flex>
       <ListParties parties={parties} partiesPast={pastParties} />
     </Container>

@@ -1,5 +1,3 @@
-import { Footer } from "@/src/layout/Footer";
-import { Header } from "@/src/layout/Header";
 import { Container, Flex } from "@chakra-ui/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -9,6 +7,8 @@ import { Providers } from "./Providers";
 
 // Global CSS
 import "./globals.css";
+import { Header } from "@/src/layout/Header";
+import { Footer } from "@/src/layout/Footer";
 
 type TRootLayout = {
   modal: ReactNode;

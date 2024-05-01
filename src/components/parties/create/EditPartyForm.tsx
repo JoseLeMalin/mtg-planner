@@ -1,38 +1,43 @@
-"use client"
+"use client";
 
-
-import { Box, Button, Card, CardBody, CardHeader, Container, FormControl, FormErrorMessage, FormLabel, Heading, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Container,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Heading,
+  Input,
+} from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
-
 type Inputs = {
-    name: string;
-    image: string | null;
-    start: Date;
-    end: Date;
-    type: string | null;
-    expiresAt: Date | null;
-  };
+  name: string;
+  image: string | null;
+  start: Date;
+  end: Date;
+  type: string | null;
+  expiresAt: Date | null;
+};
 
-export default function EditPartyForm () {
+export default function EditPartyForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<Inputs>({
+    defaultValues: {},
+  });
 
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-      } = useForm<Inputs>({
-        defaultValues: {},
-      });
-
-
-    return (
-        <Container>
-            <h1>PartyCreate</h1>
-            <Card display={"flex"} minW={"75%"} mx={4}>
-        <CardHeader>
-          
-        </CardHeader>
+  return (
+    <Container>
+      <h1>PartyCreate</h1>
+      <Card display={"flex"} minW={"75%"} mx={4}>
+        <CardHeader></CardHeader>
         <CardBody display={"flex"} flexDirection={"column"}>
           <Box display={"flex"}>
             <form onSubmit={() => console.log("submit")}>
@@ -48,17 +53,17 @@ export default function EditPartyForm () {
                   placeholder="Deck name"
                   size="md"
                 />
-                
+
                 <Heading as="h3" size="sm">
                   Nb Cards
                 </Heading>
-                <Input size="md"
-                    id="start"
-                    {...register("start", {
-                      required: true,
-                    })}
-                  >
-                </Input>
+                <Input
+                  size="md"
+                  id="start"
+                  {...register("start", {
+                    required: true,
+                  })}
+                ></Input>
                 <Heading as="h3" size="sm">
                   Image link
                 </Heading>
@@ -80,6 +85,6 @@ export default function EditPartyForm () {
           </Box>
         </CardBody>
       </Card>
-        </Container>
-    );
+    </Container>
+  );
 }

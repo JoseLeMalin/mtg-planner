@@ -85,8 +85,10 @@ export default function HomeComponent() {
         </Suspense>
         <Suspense fallback={<Spinner />}>
           <Card w={"30%"} flexShrink={0}>
-            <CardHeader id="home-second-activity-card-header" >Your events:</CardHeader>
-            <CardBody id="home-second-activity-card-body" >
+            <CardHeader id="home-second-activity-card-header">
+              Your events:
+            </CardHeader>
+            <CardBody id="home-second-activity-card-body">
               <Button id="home-events-btn" name="home-events-btn" type="button">
                 <Link href="/events">Events</Link>
               </Button>

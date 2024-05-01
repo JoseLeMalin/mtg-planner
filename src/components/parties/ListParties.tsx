@@ -1,16 +1,9 @@
 "use client";
 
-
-import {
-    Flex,
-    Switch,
-    Text
-} from "@chakra-ui/react";
+import { Flex, Switch, Text } from "@chakra-ui/react";
 import { Party } from "@prisma/client";
 import { useState } from "react";
 import { DisplayListParties } from "./DisplayListParties";
-
-
 
 type TListParties = {
   parties: Party[];
@@ -32,7 +25,7 @@ export const ListParties = ({ parties, partiesPast }: TListParties) => {
         size="md"
         onChange={() => setToggleParties(!toggleParties)}
       />
-        <DisplayListParties parties={ !toggleParties ? parties : partiesPast }  />
+      <DisplayListParties parties={!toggleParties ? parties : partiesPast} />
     </>
   );
 };
