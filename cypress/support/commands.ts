@@ -1,4 +1,4 @@
-// cypress/support/auth-provider-commands/auth0.ts
+/* // cypress/support/auth-provider-commands/auth0.ts
 import { domain as Auth0Domain } from "./auth_config.json";
 
 function loginViaAuth0Ui(username: string, password: string) {
@@ -137,3 +137,4 @@ export function logIntoGithub(
 
   cy.get("h6.dropdown-header").should("contain", name);
 }
+ */
